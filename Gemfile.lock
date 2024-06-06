@@ -285,6 +285,7 @@ PLATFORMS
   arm64-darwin-23
   x86_64-linux
 
+
 DEPENDENCIES
   autoprefixer-rails
   bootsnap

@@ -9,4 +9,11 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+
+  resources :arenas, only: [:create, :new, :show, :index] do
+    resources :arena_player, only: [:create, :new] do
+      resources :projects, only: [:create, :new, :show, :index]
+      resources :tasks, only: [:create, :new, :show, :index]
+    end
+  end
 end

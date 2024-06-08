@@ -1,8 +1,16 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
-    <%= link_to "#", class: "navbar-brand" do %>
-      <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
-    <% end %>
+    <div class="d-flex align-items-center">
+      <%= link_to "#", class: "navbar-brand" do %>
+        <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
+      <% end %>
+      <span class="navbar-text ms-2">
+        <%= link_to 'CommitGround', arena_path(1),class: 'nav-link d-inline p-0'%>
+      </span>
+      <span class="navbar-text ms-2">
+        <%= link_to 'Arenas', arenas_path, class: 'nav-link d-inline p-0'%>
+      </span>
+    </div>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -18,13 +26,13 @@
             <%= link_to "Messages", "#", class: "nav-link" %>
           </li>
           <li class="nav-item dropdown">
-          <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <% if current_user.avatar_url.nil? %>
-              <%= image_tag "https://avatars.githubusercontent.com/u/583231?v=4", class: "avatar", alt: "avatar", class: "avatar", alt: "dropdown menu" %>
-            <% else %>
-              <%= image_tag current_user.avatar_url, class: "avatar", alt: "avatar", class: "avatar", alt: "dropdown menu" %>
-            <% end %>
-          </a>
+            <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <% if current_user.avatar_url.nil? %>
+                <%= image_tag "https://avatars.githubusercontent.com/u/583231?v=4", class: "avatar", alt: "avatar", class: "avatar", alt: "dropdown menu" %>
+              <% else %>
+                <%= image_tag current_user.avatar_url, class: "avatar", alt: "avatar", class: "avatar", alt: "dropdown menu" %>
+              <% end %>
+            </a>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "Action", "#", class: "dropdown-item" %>
               <%= link_to "Another action", "#", class: "dropdown-item" %>

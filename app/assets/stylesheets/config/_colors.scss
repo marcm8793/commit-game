@@ -4,12 +4,20 @@
 $red: #FD1015;
 $blue: #0D6EFD;
 $yellow: #FFC65A;
-$orange: #E67E22;
 $green: #1EDD88;
 $gray: #0E0000;
 $light-gray: #F4F4F4;
+
+// our personal colors
+$darkblue: #102143;
+$duckblue: #1B4F69;
+$lightblue: #33ADBF;
+$orange: #EE9F2D;
+$purple: #8254DE;
 
 .gradient-background {
   background: rgb(16,33,67);
   background: linear-gradient(30deg, rgba(16,33,67,1) 8%, rgba(16,33,67,1) 46%, rgba(20,50,81,1) 65%, rgba(27,79,105,1) 77%, rgba(29,113,110,1) 91%, rgba(40,135,152,1) 100%);
   }
+
+

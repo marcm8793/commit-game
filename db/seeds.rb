@@ -2,7 +2,7 @@ require 'faker'
 
 # Create Users
 users = []
-10.times do
+20.times do
   users << User.create!(
     email: Faker::Internet.unique.email,
     password: "password",
@@ -14,7 +14,7 @@ end
 
 # Create Arenas
 arenas = []
-5.times do
+4.times do
   arenas << Arena.create!(
     name: Faker::Esport.event,
     description: Faker::Lorem.paragraph,
@@ -31,23 +31,17 @@ end
 # Create Arena Players
 arena_players = []
 arenas.each do |arena|
-  # Ensure one active arena_player per arena
-  active_player = ArenaPlayer.create!(
-    user: users.sample,
-    arena: arena,
-    score: Faker::Number.between(from: 0, to: 100),
-  )
-  arena_players << active_player
-  puts "Active Arena Player created: #{active_player.user.email} - #{active_player.arena.name} - #{active_player.score}"
-
-  3.times do
-    player = ArenaPlayer.create!(
-      user: users.sample,
-      arena: arena,
-      score: Faker::Number.between(from: 0, to: 100),
-    )
-    arena_players << player
-    puts "Arena Player created: #{player.user.email} - #{player.arena.name} - #{player.score}"
+  selected_users = users.shuffle.take(5) # Select up to 5 users for each arena
+  selected_users.each do |user|
+    unless ArenaPlayer.exists?(user: user, arena: arena)
+      player = ArenaPlayer.create!(
+        user: user,
+        arena: arena,
+        score: Faker::Number.between(from: 0, to: 100)
+      )
+      arena_players << player
+      puts "Arena Player created: #{player.user.email} - #{player.arena.name} - #{player.score}"
+    end
   end
 end
 

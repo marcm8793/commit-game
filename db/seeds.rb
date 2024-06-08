@@ -23,19 +23,32 @@ arenas = []
     image_url: Faker::LoremFlickr.image,
     user: users.sample,
     prize: Faker::Number.number(digits: 4),
+    active: [true, false].sample # Randomly set some arenas as active
   )
-  puts "Arena created: #{arenas.last.name}"
+  puts "Arena created: #{arenas.last.name} - #{arenas.last.active}"
 end
 
 # Create Arena Players
 arena_players = []
-20.times do
-  arena_players << ArenaPlayer.create!(
+arenas.each do |arena|
+  # Ensure one active arena_player per arena
+  active_player = ArenaPlayer.create!(
     user: users.sample,
-    arena: arenas.sample,
+    arena: arena,
     score: Faker::Number.between(from: 0, to: 100),
   )
-  puts "Arena Player created: #{arena_players.last.user.email} - #{arena_players.last.arena.name} - #{arena_players.last.score}"
+  arena_players << active_player
+  puts "Active Arena Player created: #{active_player.user.email} - #{active_player.arena.name} - #{active_player.score}"
+
+  3.times do
+    player = ArenaPlayer.create!(
+      user: users.sample,
+      arena: arena,
+      score: Faker::Number.between(from: 0, to: 100),
+    )
+    arena_players << player
+    puts "Arena Player created: #{player.user.email} - #{player.arena.name} - #{player.score}"
+  end
 end
 
 # Create Projects

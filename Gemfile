@@ -53,6 +53,7 @@ gem "sassc-rails"
 gem 'omniauth-github'
 gem "omniauth-rails_csrf_protection"
 gem "faker"
+gem "octokit"
 
 group :development, :test do
   gem "dotenv-rails"

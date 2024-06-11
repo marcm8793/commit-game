@@ -1,5 +1,7 @@
 <div class="row">
   <div class="col-md-3 card" style="border-radius: 5%">
-      <p>Small Card</p>
+      <% @arena.arena_players.each do |arena_player|%>
+        <%= link_to arena_player.name, arena_path(arena_player.arena) %>
+      <% end %>
   </div>
 </div>

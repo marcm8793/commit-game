@@ -1,6 +1,25 @@
-<h1>salut bonjour</h1>
-<p>
-  <%=
-    @arena.name
-  %>
-</p>
+<div class='container'>
+  <div class="row">
+    <div class="col-md-6">
+      <%= render 'shared/commit-ground/arena_player_kpis'  %>
+    </div>
+    <div class="col-md-3">
+      <%= render 'shared/commit-ground/arena_ranking' %>
+    </div>
+    <div class="col-md-3">
+      <%= render 'shared/commit-ground/arena_player_prize' %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3">
+      <%= render 'shared/commit-ground/arena_player_projects'  %>
+    </div>
+    <div class="col-md-3">
+      <%= render 'shared/commit-ground/arena_player_tasks' %>
+    </div>
+    <div class="col-md-6">
+      <%= render 'shared/commit-ground/arena_player_comments' %>
+    </div>
+  </div>
+</div>

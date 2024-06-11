@@ -1,3 +1,33 @@
-<div class="card" style="border-radius: 5%">
-  <p>Large Card</p>
+<div class="d-flex justify-content-between ms-4 me-4" style="border-radius: 5%;">
+  <div class="card" style="gap: 20px;">
+    <h5><%= @ranking_info[:rank] %> </h5>
+    <div class="d-flex justify-content-between">
+      <p>1st</p>
+      <p>120 pts</p>
+    </div>
+  </div>
+  <div class="card">
+    <h5>user.project</h5>
+    <p>
+      <i class="fab fa-github"></i> my_project_name
+      <br>
+      Commit.count <span class="badge">18</span>
+    </p>
+  </div>
+</div>
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">user.tasks</h5>
+    <div class="progress">
+      <div class="progress-bar" role="progressbar" style="width: 35%;" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100">35% completed</div>
+    </div>
+  </div>
+</div>
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">arena.weeks</h5>
+    <div class="progress">
+      <div class="progress-bar progress-bar-weeks" role="progressbar" style="width: 35%;" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100">35% completed</div>
+    </div>
+  </div>
 </div>

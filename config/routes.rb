@@ -12,6 +12,9 @@ Rails.application.routes.draw do
 
   resources :arenas, only: [:create, :new, :show, :index] do
     resources :arena_player, only: [:create, :new] do
+      member do
+        get :ranking
+      end
       resources :projects, only: [:create, :new, :show, :index]
       resources :tasks, only: [:create, :new, :show, :index]
     end

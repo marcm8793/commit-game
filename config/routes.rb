@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
-  root to: "pages#home"
+  root to: "arenas#show"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -11,13 +11,7 @@ Rails.application.routes.draw do
   # root "posts#index"
 
   resources :arenas, only: [:create, :new, :show, :index] do
-    resources :arena_player, only: [:create, :new] do
-      member do
-        get :ranking
-      end
-      resources :projects, only: [:create, :new, :show, :index]
-      resources :tasks, only: [:create, :new, :show, :index]
-    end
+    resources :projects, only: [:create, :new, :show, :index]
+    resources :tasks, only: [:create, :new, :show, :index]
   end
-
 end

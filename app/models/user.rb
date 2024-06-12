@@ -8,6 +8,8 @@ class User < ApplicationRecord
 
   devise :omniauthable, omniauth_providers: [:github]
 
+  has_many :arenas
+
   def self.from_omniauth(access_token)
     data = access_token.info
     user = User.where(email: data['email']).first
@@ -22,5 +24,6 @@ class User < ApplicationRecord
         )
     end
     user
-end
+  end
+
 end

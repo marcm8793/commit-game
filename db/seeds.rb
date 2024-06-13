@@ -28,8 +28,10 @@ arenas = []
   puts "Arena created: #{arenas.last.name} - #{arenas.last.active}"
 end
 
-# Create Arena Players
+# Create Arena Players and Projects
 arena_players = []
+projects = []
+
 arenas.each do |arena|
   selected_users = users.shuffle.take(5) # Select up to 5 users for each arena
   selected_users.each do |user|
@@ -41,31 +43,30 @@ arenas.each do |arena|
       )
       arena_players << player
       puts "Arena Player created: #{player.user.email} - #{player.arena.name} - #{player.score}"
+
+      # Create a project for each arena player
+      project = Project.create!(
+        arena_player: player,
+        repo_url: Faker::Internet.url,
+        name: Faker::App.name,
+      )
+      projects << project
+      puts "Project created: #{project.name} for ArenaPlayer ID: #{player.id}"
     end
   end
 end
 
-# Create Projects
-projects = []
-10.times do
-  projects << Project.create!(
-    arena_player: arena_players.sample,
-    repo_url: Faker::Internet.url,
-    name: Faker::App.name,
-  )
-  puts "Project created: #{projects.last.name}"
-end
-
 # Create Commits
 30.times do
-  Commit.create!(
+  commit = Commit.create!(
     project: projects.sample,
   )
+  puts "Commit created for Project ID: #{commit.project_id}"
 end
 
 # Create Tasks
 20.times do
-  Task.create!(
+  task = Task.create!(
     name: Faker::Verb.base,
     description: Faker::Lorem.paragraph,
     score: Faker::Number.between(from: 1, to: 10),
@@ -73,7 +74,7 @@ end
     arena_player: arena_players.sample,
     done: Faker::Boolean.boolean,
   )
-  puts "Task created: #{Task.last.name}"
+  puts "Task created: #{task.name} for ArenaPlayer ID: #{task.arena_player_id}"
 end
 
 puts "Seeding completed!"

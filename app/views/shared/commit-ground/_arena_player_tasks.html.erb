@@ -1,5 +1,20 @@
-<div class="card small dashboard">
-  <div class="row">
-      <p>Small Card</p>
+<% player = @selected_player || current_user.arena_players.first %>
+
+<% if player %>
+  <div class="card small dashboard">
+    <div class="row">
+      <h5>All Projects</h5>
+    </div>
+    <ul class="list-group list-group-flush">
+      <% player.projects.each do |project| %>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          <div>
+            <h6 class="mb-1"><%= project.name %></h6>
+            <small class="text-muted"><i class="fab fa-github"></i> <%= project.repo_url %></small>
+          </div>
+          <span class="badge bg-primary rounded-pill">Commits: <%= project.commits.count %></span>
+        </li>
+      <% end %>
+    </ul>
   </div>
-</div>
+<% end %>

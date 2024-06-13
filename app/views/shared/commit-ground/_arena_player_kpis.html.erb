@@ -1,33 +1,52 @@
-<div class="d-flex justify-content-between ms-4 me-4" style="border-radius: 5%;">
-  <div class="card" style="gap: 20px;">
-    <h5>rank </h5>
+<% player = @selected_player || current_user.arena_players.first %>
+<% if player %>
+  <div class="card large dashboard">
     <div class="d-flex justify-content-between">
-      <p>1st</p>
-      <p>120 pts</p>
+      <div class="card-body">
+        <div class="d-inline-flex">
+          <h5 class="card-title light-gray">> <%= player.user.pseudo %>.</h5>
+          <h5 class="card-title orange">rank</h5>
+        </div>
+        <p class="text-center"><%= player.rank %></p>
+        <p class="text-center"><%= player.score %></p>
+      </div>
+      <div class="card-body">
+        <div class="d-inline-flex">
+          <h5 class="card-title light-gray">> <%= player.user.pseudo %>.</h5>
+          <h5 class="card-title orange">project</h5>
+        </div>
+        <p>
+          <i class="fab fa-github"></i>
+          <a href="https://github.com/marcm8793/commit-game"><%= player.projects.name %></a>
+        </p>
+        <div class="d-inline-flex">
+          <p class="light-gray">> commit.</p>
+          <p class="orange">count</p>
+          <p class="light-red">&nbsp;&nbsp;&nbsp;# => 8</p>
+        </div>
+      </div>
     </div>
-  </div>
-  <div class="card">
-    <h5>user.project</h5>
-    <p>
-      <i class="fab fa-github"></i> my_project_name
-      <br>
-      Commit.count <span class="badge">18</span>
-    </p>
-  </div>
-</div>
-<div class="card">
-  <div class="card-body">
-    <h5 class="card-title">user.tasks</h5>
+    <div class="card-body">
+      <div class="d-inline-flex">
+        <h5 class="card-title light-gray">> <%= player.user.pseudo %>.</h5>
+        <h5 class="card-title orange">tasks</h5>
+      </div>
+      <div class="progress">
+        <div class="progress-bar bg-warning" role="progressbar" style="width: 35%;" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100">35% completed</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="d-inline-flex">
+      <h5 class="card-title light-gray">>&nbsp;</h5>
+      <h5 class="card-title lightblue"><%= @arena.name %></h5>
+      <h5 class="card-title light-gray">.</h5>
+      <h5 class="card-title orange">weeks</h5>
+    </div>
     <div class="progress">
-      <div class="progress-bar" role="progressbar" style="width: 35%;" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100">35% completed</div>
+      <div class="progress-bar progress-bar-weeks bg-secondary" role="progressbar" style="width: 35%;" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100">35% completed</div>
+      </div>
     </div>
   </div>
-</div>
-<div class="card">
-  <div class="card-body">
-    <h5 class="card-title">arena.weeks</h5>
-    <div class="progress">
-      <div class="progress-bar progress-bar-weeks" role="progressbar" style="width: 35%;" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100">35% completed</div>
-    </div>
-  </div>
-</div>
+<% else %>
+  <p>No player data available. Please select a player or join an arena.</p>
+<% end %>

@@ -1,10 +1,14 @@
 class ArenasController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create]
+
   def index
     @arenas = Arena.all
   end
 
   def show
     @arena = Arena.find(params[:id])
+    @arena_players = ArenaPlayer.where(arena_id: @arena.id).order(score: :desc)
+    @selected_player = @arena_players.find(params[:player_id]) if params[:player_id].present?
   end
 
   def new

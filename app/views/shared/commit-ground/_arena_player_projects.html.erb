@@ -1,5 +1,58 @@
-<div class="card small dashboard">
-  <div class="row">
-      <p>Small Card</p>
+
+<% player = @selected_player || current_user.arena_players.first %>
+
+<% if player %>
+  <% projects = player.projects %>
+  <% project = projects.first if projects.any? %>
+  <% tasks_by_week = player.tasks.group_by(&:week_number) %>
+  <% total_weeks = @total_weeks || 5 %> <!-- Default to 5 weeks if @total_weeks is not set -->
+  <% current_week = @current_week || 1 %> <!-- Default to week 1 if @current_week is not set -->
+
+  <div class="row" data-controller="week-selector" data-week-selector-tasks-by-week="<%= tasks_by_week.to_json %>">
+    <!-- Project Card with Week Selector -->
+    <% if project %>
+      <div class="col-md-6">
+        <div class="card small dashboard mt-3">
+          <div class="card-header">
+            <h5 class="card-title"><%= project.name %></h5>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <% (1..total_weeks).each do |week| %>
+                <div class="col-12">
+                  <div class="form-check">
+                    <input class="form-check-input week-selector" type="radio" name="week" id="week<%= week %>" value="<%= week %>" data-week-selector-target="weekSelector" <%= 'checked' if week == current_week %>>
+                    <label class="form-check-label" for="week<%= week %>">
+                      W<%= week %> - <%= tasks_by_week[week]&.map(&:name)&.join(", ") || "No tasks" %> - <%= tasks_by_week[week]&.map(&:score)&.sum || 0 %> pts
+                    </label>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% else %>
+      <p>No projects available for this player.</p>
+    <% end %>
+
+    <!-- Task Card -->
+    <div class="col-md-6">
+      <div class="card small dashboard mt-3">
+        <div class="card-header">
+          <h5 class="card-title">Tasks for Week <span id="current-week-number" data-week-selector-target="currentWeekNumber"><%= current_week %></span></h5>
+        </div>
+        <div class="card-body" id="task-list" data-week-selector-target="taskList">
+          <% tasks_by_week[current_week]&.each do |task| %>
+            <div class="task-item">
+              <h6><%= task.name %> - <%= task.score %> pts</h6>
+              <p><%= task.description %></p>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
+<% else %>
+  <p>No player data available. Please select a player or join an arena.</p>
+<% end %>

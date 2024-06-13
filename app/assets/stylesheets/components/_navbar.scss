@@ -13,3 +13,20 @@
 .navbar-lewagon .navbar-brand img {
   width: 40px;
 }
+
+.nav-button {
+    margin: 25px;
+    padding: 10px 20px !important;
+    color: #8992A2 !important;
+    font-weight: bold !important;
+    font-family: 'Roboto', sans-serif !important;
+}
+
+.nav-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border: rgba(255, 255, 255, 0.3);
+  margin: 25px;
+  padding: 10px 20px !important;
+  border-radius: 10px;
+  color: aqua !important;
+}

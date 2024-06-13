@@ -1,7 +1,11 @@
-<div class="row">
-  <div class="col-md-3 card" style="border-radius: 5%">
-      <% @arena.arena_players.each do |arena_player|%>
-        <%= link_to arena_player.name, arena_path(arena_player.arena) %>
-      <% end %>
+<div class="card small dashboard">
+  <div class="card-body">
+    <div class="d-inline-flex">
+      <h5 class="card-title light-gray">>&nbsp;</h5>
+      <h5 class="card-title lightblue">Range</h5>
+      <h5 class="card-title light-gray">: :</h5>
+      <h5 class="card-title orange">new</h5>
+    </div>
+      <p>Ranking</p>
   </div>
 </div>

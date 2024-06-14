@@ -15,11 +15,13 @@ end
 # Create Arenas
 arenas = []
 4.times do
+  start_date = Faker::Date.backward(days: 15)
+  end_date = start_date + 5.weeks
   arenas << Arena.create!(
     name: Faker::Esport.event,
     description: Faker::Lorem.paragraph,
-    start_date: Faker::Date.backward(days: 30),
-    end_date: Faker::Date.forward(days: 30),
+    start_date: start_date,
+    end_date: end_date,
     image_url: Faker::LoremFlickr.image,
     user: users.sample,
     prize: Faker::Number.number(digits: 4),
@@ -52,29 +54,29 @@ arenas.each do |arena|
       )
       projects << project
       puts "Project created: #{project.name} for ArenaPlayer ID: #{player.id}"
+
+      # Create tasks for each week for the arena player
+      (1..5).each do |week|
+        task = Task.create!(
+          name: Faker::Verb.base,
+          description: Faker::Lorem.paragraph,
+          score: Faker::Number.between(from: 1, to: 10),
+          week_number: week,
+          arena_player: player,
+          done: Faker::Boolean.boolean,
+        )
+        puts "Task created: #{task.name} for ArenaPlayer ID: #{task.arena_player_id} - Week #{week}"
+      end
     end
   end
 end
 
-# Create Commits
+# Create additional random Commits
 30.times do
   commit = Commit.create!(
     project: projects.sample,
   )
   puts "Commit created for Project ID: #{commit.project_id}"
-end
-
-# Create Tasks
-20.times do
-  task = Task.create!(
-    name: Faker::Verb.base,
-    description: Faker::Lorem.paragraph,
-    score: Faker::Number.between(from: 1, to: 10),
-    week_number: Faker::Number.between(from: 1, to: 5),
-    arena_player: arena_players.sample,
-    done: Faker::Boolean.boolean,
-  )
-  puts "Task created: #{task.name} for ArenaPlayer ID: #{task.arena_player_id}"
 end
 
 puts "Seeding completed!"

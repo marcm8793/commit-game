@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_06_08_140909) do
+ActiveRecord::Schema[7.1].define(version: 2024_06_14_170936) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -38,11 +38,29 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_08_140909) do
     t.index ["user_id"], name: "index_arenas_on_user_id"
   end
 
+  create_table "chatrooms", force: :cascade do |t|
+    t.string "name"
+    t.bigint "arena_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["arena_id"], name: "index_chatrooms_on_arena_id"
+  end
+
   create_table "commits", force: :cascade do |t|
     t.bigint "project_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["project_id"], name: "index_commits_on_project_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.text "content"
+    t.bigint "user_id", null: false
+    t.bigint "chatroom_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["chatroom_id"], name: "index_messages_on_chatroom_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "projects", force: :cascade do |t|
@@ -83,7 +101,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_08_140909) do
   add_foreign_key "arena_players", "arenas"
   add_foreign_key "arena_players", "users"
   add_foreign_key "arenas", "users"
+  add_foreign_key "chatrooms", "arenas"
   add_foreign_key "commits", "projects"
+  add_foreign_key "messages", "chatrooms"
+  add_foreign_key "messages", "users"
   add_foreign_key "projects", "arena_players"
   add_foreign_key "tasks", "arena_players"
 end

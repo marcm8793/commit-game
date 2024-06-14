@@ -12,18 +12,16 @@
     <!-- Project Card with Week Selector -->
     <% if project %>
       <div class="col-md-6">
-        <div class="card small dashboard mt-3">
-          <div class="card-header">
-            <h5 class="card-title"><%= project.name %></h5>
-          </div>
+        <div class="card small dashboard">
           <div class="card-body">
+           <h5 class="card-title">> <%= project.name %>.sprint</h5>
             <div class="row">
               <% (1..total_weeks).each do |week| %>
                 <div class="col-12">
-                  <div class="form-check">
+                  <div class="form-check m-2">
                     <input class="form-check-input week-selector" type="radio" name="week" id="week<%= week %>" value="<%= week %>" data-week-selector-target="weekSelector" <%= 'checked' if week == current_week %>>
                     <label class="form-check-label" for="week<%= week %>">
-                      W<%= week %> - <%= tasks_by_week[week]&.map(&:name)&.join(", ") || "No tasks" %> - <%= tasks_by_week[week]&.map(&:score)&.sum || 0 %> pts
+                      W<%= week %> - <%= tasks_by_week[week].count%> Task(s)- <%= tasks_by_week[week]&.map(&:score)&.sum || 0 %> pts
                     </label>
                   </div>
                 </div>
@@ -38,17 +36,19 @@
 
     <!-- Task Card -->
     <div class="col-md-6">
-      <div class="card small dashboard mt-3">
-        <div class="card-header">
-          <h5 class="card-title">Tasks for Week <span id="current-week-number" data-week-selector-target="currentWeekNumber"><%= current_week %></span></h5>
-        </div>
-        <div class="card-body" id="task-list" data-week-selector-target="taskList">
-          <% tasks_by_week[current_week]&.each do |task| %>
-            <div class="task-item">
-              <h6><%= task.name %> - <%= task.score %> pts</h6>
-              <p><%= task.description %></p>
-            </div>
-          <% end %>
+      <div class="card small dashboard">
+        <div class="card-body">
+        <h5 class="card-title">> week<span id="current-week-number" data-week-selector-target="currentWeekNumber"><%=current_week %></span>.backlog</h5>
+          <div id="task-list" data-week-selector-target="taskList">
+            <% tasks_by_week[current_week]&.each do |task| %>
+              <div class="task-item">
+                <div class="mt-2">
+                  <h6> <%= task.name %> - <%= task.score %> pts</h6>
+                  <p><%= task.description %></p>
+                </div>
+              </div>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>

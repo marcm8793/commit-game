@@ -14,8 +14,11 @@
           <h5 class="card-title light-gray">> <%= player.user.pseudo %>.</h5>
           <h5 class="card-title orange">rank</h5>
         </div>
-        <p class="text-center"><%= player.rank %></p>
-        <p class="text-center"><%= player.score %></p>
+        <div class="d-flex justify-content-around">
+        <%= image_tag(player.user.avatar_url, alt: player.user.pseudo, class: "rounded-circle", style: "width: 40px; height: 40px;") %>
+        <h2><span class="badge bg-secondary"><%= player.rank %></span></h2>
+        <h2><span class="badge bg-warning"><%= player.score %> pts</span></h2>
+        </div>
       </div>
       <% if project %>
       <div class="card-body">
@@ -30,7 +33,7 @@
         <div class="d-inline-flex">
           <p class="light-gray">> commit.</p>
           <p class="orange">count</p>
-          <p class="light-red">&nbsp;&nbsp;&nbsp;# => <%= project.commits.count %></p>
+          <p class="light-red">&nbsp;&nbsp;<span class="badge bg-warning"><%= project.commits.count %></span></p>
         </div>
       </div>
       <% end %>

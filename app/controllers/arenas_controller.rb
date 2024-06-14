@@ -5,7 +5,8 @@ class ArenasController < ApplicationController
   before_action :set_total_weeks_and_current_week, only: [:show]
 
   def index
-    @arenas = Arena.all
+    @created_arenas = current_user.arenas
+    @joined_arenas = Arena.joins(:arena_players).where(arena_players: { user_id: current_user.id }).distinct
   end
 
   def show

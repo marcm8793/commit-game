@@ -1,0 +1,39 @@
+<div class="container">
+  <h1 class="my-4">Create New Arena</h1>
+
+  <%= simple_form_for @arena do |f| %>
+    <div class="form-group">
+      <%= f.input :name, label: 'Arena Name', input_html: { class: 'form-control' } %>
+    </div>
+
+    <div class="form-group">
+      <%= f.input :description, label: 'Description', input_html: { class: 'form-control' } %>
+    </div>
+
+    <div class="form-group">
+      <%= f.input :start_date, as: :date, label: 'Start Date', input_html: { class: 'form-control' } %>
+    </div>
+
+    <div class="form-group">
+      <%= f.input :end_date, as: :date, label: 'End Date', input_html: { class: 'form-control' } %>
+    </div>
+
+    <div class="form-group">
+      <%= f.input :image_url, label: 'Image URL', input_html: { class: 'form-control' } %>
+    </div>
+
+    <div class="form-group">
+      <%= f.input :prize, label: 'Prize', input_html: { class: 'form-control' } %>
+    </div>
+
+    <div class="form-group">
+      <%= f.input :active, label: 'Active', as: :boolean, input_html: { class: 'form-check-input' } %>
+    </div>
+
+    <div class="form-group">
+      <%= f.submit 'Create Arena', class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+
+  <%= link_to 'Back to Arenas', arenas_path, class: 'btn btn-secondary mt-3' %>
+</div>

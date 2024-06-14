@@ -1,4 +1,22 @@
 <div class="card small dashboard">
+  <div class="card-body mb-n3">
+    <div class="d-inline-flex">
+      <h5 class="card-title light-gray">>&nbsp;</h5>
+      <h5 class="card-title lightblue"><%= @arena.name %></h5>
+      <h5 class="card-title light-gray">.</h5>
+      <h5 class="card-title orange">start_date</h5>
+    </div>
+    <h5><span class="badge bg-warning"><%= @arena.start_date %></span></h5>
+  </div>
+  <div class="card-body">
+    <div class="d-inline-flex">
+      <h5 class="card-title light-gray">>&nbsp;</h5>
+      <h5 class="card-title lightblue"><%= @arena.name %></h5>
+      <h5 class="card-title light-gray">.</h5>
+      <h5 class="card-title orange">end_date</h5>
+    </div>
+    <h5><span class="badge bg-warning"><%= @arena.end_date %></span></h5>
+  </div>
   <div class="card-body">
     <div class="d-inline-flex">
         <h5 class="card-title light-gray">>&nbsp;</h5>
@@ -6,24 +24,6 @@
         <h5 class="card-title light-gray">.</h5>
         <h5 class="card-title orange">prize</h5>
     </div>
-    <p class="text-center">50 000€</p>
-  </div>
-  <div class="card-body">
-    <div class="d-inline-flex">
-      <h5 class="card-title light-gray">>&nbsp;</h5>
-      <h5 class="card-title lightblue"><%= @arena.name %></h5>
-      <h5 class="card-title light-gray">.</h5>
-      <h5 class="card-title orange">start</h5>
-    </div>
-      <p class="text-center"><%= @arena.start_date %></p>
-  </div>
-  <div class="card-body">
-    <div class="d-inline-flex">
-      <h5 class="card-title light-gray">>&nbsp;</h5>
-      <h5 class="card-title lightblue"><%= @arena.name %></h5>
-      <h5 class="card-title light-gray">.</h5>
-      <h5 class="card-title orange">finish</h5>
-    </div>
-    <p class="text-center"><%= @arena.end_date %></p>
+    <h5><span class="badge bg-secondary"><%= @arena.prize %>€</span></h5>
   </div>
 </div>

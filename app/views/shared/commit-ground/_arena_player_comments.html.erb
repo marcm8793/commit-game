@@ -9,6 +9,7 @@
     <%= f.input :content,
       label: false,
       placeholder: "Message ##{@arena.chatroom.name}",
+      input_html: { class: "text-dark" },
       wrapper_html: { class: "flex-grow-1" }
     %>
     <%= f.submit "Send", class: "btn btn-primary mb-3" %>

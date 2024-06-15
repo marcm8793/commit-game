@@ -54,6 +54,7 @@ gem 'omniauth-github'
 gem "omniauth-rails_csrf_protection"
 gem "faker"
 gem "octokit"
+gem 'redis'
 
 group :development, :test do
   gem "dotenv-rails"

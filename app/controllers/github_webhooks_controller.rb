@@ -29,12 +29,6 @@ class GithubWebhooksController < ActionController::API
     return unless @task
 
     @task.update(done: true)
-    # TaskUpdateChannel.broadcast_to(@task, { task: @task, project: project })
-    Turbo::StreamsChannel.broadcast_replace_to(
-      "tasks",
-      target: "task_#{@task.id}",
-      partial: "tasks/task",
-      locals: { task: @task }
-    )
+    redirect_to root_path
   end
 end

@@ -9,11 +9,4 @@ class Task < ApplicationRecord
   validates :arena_player, presence: true
   validates :done, inclusion: { in: [true, false] }
 
-  after_update_commit -> {
-    broadcast_replace_to "tasks",
-                         target: "task_#{id}",
-                         partial: "tasks/task",
-                         locals: { task: self }
-  }
-
 end

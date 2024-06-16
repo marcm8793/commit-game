@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resource :github_webhooks, only: :create, defaults: { formats: :json }
   # get 'messages/create'
   # get 'chatrooms/show'
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }

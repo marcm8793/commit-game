@@ -14,7 +14,8 @@
       <div class="col-md-6">
         <div class="card small dashboard">
           <div class="card-body">
-            <h5 class="card-title"><%= project.name %>.sprint</h5>
+            <h5 class="card-title"><%= project.name %>.sprint</h5>=======
+            <h5 class="card-title">Sprint</h5>
             <div class="row">
               <% (1..total_weeks).each do |week| %>
                 <div class="col-12">
@@ -38,7 +39,7 @@
     <div class="col-md-6">
       <div class="card small dashboard">
         <div class="card-body">
-          <h5 class="card-title">week<span id="current-week-number" data-week-selector-target="currentWeekNumber"><%= current_week %></span>.backlog</h5>
+          <h5 class="card-title">Tâches hebdomadaires<span id="current-week-number" data-week-selector-target="currentWeekNumber" style="display: none;"  ><% current_week %></span></h5>
           <div id="task-list" data-week-selector-target="taskList">
             <% tasks_by_week[current_week]&.each do |task| %>
               <%= render partial: "tasks/task", locals: { task: task } %>

@@ -10,38 +10,21 @@
   <div class="card large dashboard">
     <div class="d-flex justify-content-between">
       <div class="card-body">
-        <div class="d-inline-flex">
-          <h5 class="card-title light-gray">> <%= player.user.pseudo %>.</h5>
-          <h5 class="card-title orange">rank</h5>
-        </div>
         <div class="d-flex justify-content-around">
         <%= image_tag(player.user.avatar_url, alt: player.user.pseudo, class: "rounded-circle", style: "width: 40px; height: 40px;") %>
-        <h2><span class="badge bg-secondary"><%= player.rank %></span></h2>
+        <h2><span class="badge bg-secondary"><%= player.rank %><%= player.rank == 1 ? "er" : "ème"  %></span></h2>
         <h2><span class="badge bg-warning"><%= player.score %> pts</span></h2>
         </div>
       </div>
       <% if project %>
       <div class="card-body">
-        <div class="d-inline-flex">
-          <h5 class="card-title light-gray">> <%= player.user.pseudo %>.</h5>
-          <h5 class="card-title orange">project</h5>
-        </div>
-        <p>
-          <i class="fab fa-github"></i>
-          <a href="<%= project.repo_url %>"><%= project.name %></a>
-        </p>
-        <div class="d-inline-flex">
-          <p class="light-gray">> commit.</p>
-          <p class="orange">count</p>
-          <p class="light-red">&nbsp;&nbsp;<span class="badge bg-warning"><%= project.commits.count %></span></p>
-        </div>
+        <h2><span class="badge bg-primary"><i class="fab fa-github"></i><a class="text-info" href="<%= project.repo_url %>"> <%= project.name %></a></span></h2>
       </div>
       <% end %>
     </div>
     <div class="card-body">
       <div class="d-inline-flex">
-        <h5 class="card-title light-gray">> <%= player.user.pseudo %>.</h5>
-        <h5 class="card-title orange">tasks</h5>
+        <h5 class="card-title">Tâches</h5>
       </div>
       <div class="progress">
         <div class="progress-bar bg-warning" role="progressbar" style="width: <%= task_completion_percentage %>%;" aria-valuenow="<%= task_completion_percentage %>" aria-valuemin="0" aria-valuemax="100"><%= task_completion_percentage %>% completed</div>
@@ -49,13 +32,13 @@
     </div>
     <div class="card-body">
       <div class="d-inline-flex">
-        <h5 class="card-title light-gray">>&nbsp;</h5>
-        <h5 class="card-title lightblue"><%= @arena.name %></h5>
-        <h5 class="card-title light-gray">.</h5>
-        <h5 class="card-title orange">weeks</h5>
+        <h5 class="card-title">Semaines</h5>
       </div>
       <div class="progress">
         <div class="progress-bar progress-bar-weeks bg-secondary" role="progressbar" style="width: <%= (@current_week.to_f / @total_weeks * 100).round %>%;" aria-valuenow="<%= @current_week %>" aria-valuemin="0" aria-valuemax="100"><%= @current_week %> weeks</div>
+      </div>
+      <div class="d-flex justify-content-end">
+        <p><%= @arena.end_date %></p>
       </div>
     </div>
   </div>

@@ -1,3 +1,4 @@
+#TODO: Update this file to update the task status in real time
 class TasksController < ApplicationController
   before_action :set_arena_player, only: [:index, :show, :new, :create]
 
@@ -19,6 +20,18 @@ class TasksController < ApplicationController
       redirect_to root_path
     else
       render :new
+    end
+  end
+
+  def update
+    @task = Task.find(params[:id])
+    if @task.update(task_params)
+      respond_to do |format|
+        format.turbo_stream
+        format.html { redirect_to @task, notice: 'Task was successfully updated.' }
+      end
+    else
+      render :edit
     end
   end
 

@@ -7,6 +7,7 @@ class ArenasController < ApplicationController
   def index
     @created_arenas = current_user.arenas
     @joined_arenas = Arena.joins(:arena_players).where(arena_players: { user_id: current_user.id }).distinct
+    @arenas = Arena.all
   end
 
   def show

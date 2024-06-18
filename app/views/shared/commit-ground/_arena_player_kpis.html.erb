@@ -11,16 +11,14 @@
     <div class="d-flex justify-content-between">
       <div class="card-body">
         <div class="d-flex justify-content-around">
-        <%= image_tag(player.user.avatar_url, alt: player.user.pseudo, class: "rounded-circle", style: "width: 40px; height: 40px;") %>
-        <h2><span class="badge bg-secondary"><%= player.rank %><%= player.rank == 1 ? "er" : "ème"  %></span></h2>
-        <h2><span class="badge bg-warning"><%= player.score %> pts</span></h2>
+          <%= image_tag(player.user.avatar_url, alt: player.user.pseudo, class: "rounded-circle", style: "width: 40px; height: 40px;") %>
+          <h2><span class="badge bg-secondary"><%= player.rank %><%= player.rank == 1 ? "er" : "ème"  %></span></h2>
+          <h2><span class="badge bg-warning"><%= player.score %> pts</span></h2>
+          <% if project %>
+            <h2><span class="badge bg-primary"><i class="fab fa-github"></i><a class="text-info" href="<%= project.repo_url %>"> <%= project.name %></a></span></h2>
+          <% end %>
         </div>
       </div>
-      <% if project %>
-      <div class="card-body">
-        <h2><span class="badge bg-primary"><i class="fab fa-github"></i><a class="text-info" href="<%= project.repo_url %>"> <%= project.name %></a></span></h2>
-      </div>
-      <% end %>
     </div>
     <div class="card-body">
       <div class="d-inline-flex">

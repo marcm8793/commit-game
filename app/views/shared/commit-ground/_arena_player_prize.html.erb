@@ -1,5 +1,17 @@
 <div class="card small dashboard">
-  <div class="card-body">
-    <h2><span class="badge bg-secondary"><%= @arena.prize %>€</span></h2>
+  <div class="card-body ">
+    <div class="d-flex justify-content-between">
+      <h5 class="card-title light-gray">Cagnotte</h5>
+      <h3><span class="badge bg-secondary"><%= @arena.prize %> €</span></h3>
+    </div>
+    <div class="card-body">
+      <h6 class="card-title">1er <%= (@arena.prize*0.5).round %> €</h6>
+    </div>
+    <div class="card-body">
+      <h6 class="card-title">2ème <%= (@arena.prize*0.3).round %> €</h6>
+    </div>
+    <div class="card-body">
+      <h6 class="card-title">3ème <%= (@arena.prize*0.2).round %> €</h6>
+    </div>
   </div>
 </div>

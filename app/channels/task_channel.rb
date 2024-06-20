@@ -1,7 +1,8 @@
 #TODO: Update this file to update the task status in real time
-class TaskUpdateChannel < ApplicationCable::Channel
+class TaskChannel < ApplicationCable::Channel
   def subscribed
-    stream_from "task_update_channel"
+    p '========TaskChannel subscribed=========='
+    stream_from "tasks"
   end
 
   def unsubscribed

@@ -2,30 +2,42 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable,
+         :omniauthable, omniauth_providers: [:github]
 
   validates :pseudo, presence: true, uniqueness: true
-
-  devise :omniauthable, omniauth_providers: [:github]
 
   has_many :arena_players
   has_many :arenas, through: :arena_players
 
   def self.from_omniauth(access_token)
-    data = access_token.info
-    user = User.where(email: data['email']).first
-    # testtest2
+    user_data = access_token.info
+    user_email = fetch_primary_email(access_token.credentials.token)
 
-    # Uncomment the section below if you want users to be created if they don't exist
-     unless user
-        user = User.create(
-           email: data.email,
-           password: Devise.friendly_token[0,20],
-           pseudo: data['nickname'],
-           avatar_url: data['image']
-        )
+    user = User.where(email: user_email).first
+
+    unless user
+      user = User.create(
+        email: user_email,
+        password: Devise.friendly_token[0, 20],
+        pseudo: user_data['nickname'],
+        avatar_url: user_data['image']
+      )
     end
     user
   end
 
+  private
+
+  def self.fetch_primary_email(access_token)
+    emails_url = 'https://api.github.com/user/emails'
+    response = RestClient.get(emails_url, { Authorization: "token #{access_token}" })
+    emails = JSON.parse(response.body)
+
+    primary_email = emails.find { |email| email['primary'] && email['verified'] }
+    primary_email ? primary_email['email'] : nil
+  rescue StandardError => e
+    Rails.logger.error "Failed to fetch primary email from GitHub: #{e.message}"
+    nil
+  end
 end

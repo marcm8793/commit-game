@@ -7,7 +7,7 @@
   <% total_weeks = @total_weeks || 5 %> <!-- Default to 5 weeks if @total_weeks is not set -->
   <% current_week = @current_week || 1 %> <!-- Default to week 1 if @current_week is not set -->
 
-  <div class="row" data-controller="week-selector" data-week-selector-tasks-by-week="<%= tasks_by_week.to_json %>">
+  <div class="row" data-controller="week-selector task" data-week-selector-tasks-by-week="<%= tasks_by_week.to_json %>" data-task-task-ids-value="<%= player.tasks.map(&:id).to_json %>">
     <!-- Project Card with Week Selector -->
     <% if project %>
       <div class="col-md-6">
@@ -38,10 +38,18 @@
     <div class="col-md-6">
       <div class="card small dashboard">
         <div class="card-body">
-          <h5 class="card-title">Tâches hebdomadaires<span id="current-week-number" data-week-selector-target="currentWeekNumber" style="display: none;"  ><% current_week %></span></h5>
+          <h5 class="card-title">Weekly Tasks<span id="current-week-number" data-week-selector-target="currentWeekNumber" style="display: none;"><%= current_week %></span></h5>
           <div id="task-list" data-week-selector-target="taskList">
             <% tasks_by_week[current_week]&.each do |task| %>
-              <%= render partial: "tasks/task", locals: { task: task } %>
+              <div class="task-item mt-2" data-task-id="<%= task.id %>" data-task-target="task">
+                <div class="form-check">
+                  <input class="form-check-input task-done" type="checkbox" value="" <%= 'checked' if task.done %> disabled>
+                  <label class="form-check-label task-name <%= 'text-decoration-line-through' if task.done %>"><%=task.name%> - <%=task.score%> pts</label>
+                  <i class="fa fa-check text-success ml-2 <%= 'd-none' unless task.done %>"></i>
+                </div>
+                <p class="task-description"><%= task.description %></p>
+                <div class="task-score">Score: <%= task.score %></div>
+              </div>
             <% end %>
           </div>
         </div>

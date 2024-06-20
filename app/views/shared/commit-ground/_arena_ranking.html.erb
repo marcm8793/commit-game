@@ -10,10 +10,10 @@
             <%= image_tag(arena_player.user.avatar_url, alt: arena_player.user.pseudo, class: "rounded-circle me-3", style: "width: 40px; height: 40px;") %>
             <div class="d-block-flex">
               <p><%= arena_player.user.pseudo %> </p>
-              <small class="text-muted">Score: <%= arena_player.score %> pts</small>
+              <small class="text-muted">Score: <%= arena_player.total_score %> pts</small>
             </div>
           </div>
-          <span class="badge bg-primary rounded-pill"><%= index + 1 %></span>
+          <span class="badge bg-primary rounded-pill"><%= arena_player.rank %></span>
         <% end %>
       <% end %>
     </div>

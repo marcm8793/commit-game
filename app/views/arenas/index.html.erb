@@ -2,71 +2,51 @@
   <h1 class="my-4">Your ArenasPat</h1>
 
   <ul class="nav nav-tabs d-flex justify-content-between align-items-center mb-4" id="arenaTabs" role="tablist">
-    <div class="d-flex">
+    <%# <div class="d-flex">
       <li class="nav-item" role="presentation">
         <a class="nav-link active" id="created-arenas-tab" data-bs-toggle="tab" href="#created-arenas" role="tab" aria-controls="created-arenas" aria-selected="true">Created Arenas</a>
       </li>
       <li class="nav-item" role="presentation">
         <a class="nav-link" id="joined-arenas-tab" data-bs-toggle="tab" href="#joined-arenas" role="tab" aria-controls="joined-arenas" aria-selected="false">Joined Arenas</a>
       </li>
-    </div>
+    </div> %>
     <%= link_to 'Create Arena', new_arena_path, class: 'btn btn-primary' %>
   </ul>
 
-  <div class="tab-content" id="arenaTabsContent">
-    <div class="tab-pane fade show active" id="created-arenas" role="tabpanel" aria-labelledby="created-arenas-tab">
-      <% if @created_arenas.any? %>
-        <div class="row">
-          <% @created_arenas.each do |arena| %>
-            <div class="col-md-6 col-lg-4 mb-4">
-              <div class="card h-100">
-                <% if arena.image_url.present? %>
-                  <img src="<%= arena.image_url %>" class="card-img-top" alt="<%= arena.name %>">
-                <% end %>
-                <div class="card-body">
-                  <h5 class="card-title"><%= arena.name %></h5>
-                  <p class="card-text"><%= arena.description %></p>
-                  <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Start Date: <%= arena.start_date %></li>
-                    <li class="list-group-item">End Date: <%= arena.end_date %></li>
-                    <li class="list-group-item">Prize: <%= number_to_currency(arena.prize) %></li>
-                    <li class="list-group-item">Status: <%= arena.active ? 'Active' : 'Inactive' %></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          <% end %>
-        </div>
-      <% else %>
-        <p class="text-muted">You have not created any arenas yet.</p>
-      <% end %>
+
+ <div class="row">
+    <div class="col">
+      <p><%= @arenas.count %> arenas available.</p>
     </div>
-    <div class="tab-pane fade" id="joined-arenas" role="tabpanel" aria-labelledby="joined-arenas-tab">
-      <% if @joined_arenas.any? %>
-        <div class="row">
-          <% @joined_arenas.each do |arena| %>
-            <div class="col-md-6 col-lg-4 mb-4">
-              <div class="card h-100">
-                <% if arena.image_url.present? %>
-                  <img src="<%= arena.image_url %>" class="card-img-top" alt="<%= arena.name %>">
-                <% end %>
-                <div class="card-body">
-                  <h5 class="card-title"><%= arena.name %></h5>
-                  <p class="card-text"><%= arena.description %></p>
-                  <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Start Date: <%= arena.start_date %></li>
-                    <li class="list-group-item">End Date: <%= arena.end_date %></li>
-                    <li class="list-group-item">Prize: <%= number_to_currency(arena.prize) %></li>
-                    <li class="list-group-item">Status: <%= arena.active ? 'Active' : 'Inactive' %></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          <% end %>
+  </div class="row">
+
+
+<div class="row mb-4">
+  <% @arenas.each_with_index do |arena, index| %>
+    <div class="col-md-4 mt-4">
+      <div class="card">
+      <div>
+       <% if arena.image_url.present? %>
+          <img src="<%= arena.image_url %>" class="card-img-top pic" alt="<%= arena.name %>">
+        <% end %>
+      </div>
+        <div class="card-body">
+        <div class="d-flex justify-content-between align-items-center w-100">
+          <h5 class="card-title text-primary"><%= arena.name %></h5>
+          <a href="<%= arena_path(arena) %>" class="btn btn-primary button_radius">Join</a>
         </div>
-      <% else %>
-        <p class="text-muted">You have not joined any arenas yet.</p>
-      <% end %>
+        <div class="mt-2">
+          <span style="height: 20px; line-height: 20px;">
+          <i class="fa-solid fa-calendar" style="color: #ffffff;"></i>
+          <%= arena.start_date %>
+          </span>
+          <span style="height: 20px; line-height: 20px;">
+          <i class="fa-solid fa-calendar" style="color: #ffffff;"></i>
+          <%= arena.prize %>
+          </span>
+        </div>
+        </div>
+      </div>
     </div>
-  </div>
+  <% end %>
 </div>

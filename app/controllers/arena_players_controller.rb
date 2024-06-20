@@ -1,3 +1,2 @@
 class ArenaPlayersController < ApplicationController
-
 end

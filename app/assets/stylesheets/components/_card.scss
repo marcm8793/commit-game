@@ -28,15 +28,16 @@
 
 .button_radius {
   border-radius: 40px;
+}
 
 .messages {
   overflow: unset !important;
   gap: 1rem;
-  #messages{
+  #messages {
     height: 80%;
     overflow: scroll;
   }
-  .submit-message{
+  .submit-message {
     height: auto;
   }
 }

@@ -4,7 +4,7 @@
   padding-right: ($spacer * 1) !important;
   padding-top: ($spacer * 1) !important;
   padding-bottom: ($spacer * 1) !important;
-  border-radius: 10px;
+  border-radius: 30px;
   background-color: rgba(255, 255, 255, 0.1);
   border: none;
   overflow: auto;
@@ -21,6 +21,13 @@
 .large {
   flex: 0 0 50%;
 }
+
+.pic {
+  border-radius: 30px !important;
+}
+
+.button_radius {
+  border-radius: 40px;
 
 .messages {
   overflow: unset !important;

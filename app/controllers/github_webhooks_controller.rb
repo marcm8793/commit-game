@@ -21,7 +21,7 @@ class GithubWebhooksController < ActionController::API
   end
 
   def update_tasks(commit_message, repo_url, ref)
-    branch_name = ref.split('/').last
+    # branch_name = ref.split('/').last
     project = Project.find_by(repo_url: repo_url)
     return unless project
 
@@ -29,6 +29,7 @@ class GithubWebhooksController < ActionController::API
     return unless @task
 
     @task.update(done: true)
-    redirect_to root_path
+    p "====Task update======"
+    TaskChannel.broadcast_to("tasks", { task: @task, done: true})
   end
 end

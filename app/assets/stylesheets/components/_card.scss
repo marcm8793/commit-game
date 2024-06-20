@@ -21,3 +21,15 @@
 .large {
   flex: 0 0 50%;
 }
+
+.messages {
+  overflow: unset !important;
+  gap: 1rem;
+  #messages{
+    height: 80%;
+    overflow: scroll;
+  }
+  .submit-message{
+    height: auto;
+  }
+}

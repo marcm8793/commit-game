@@ -17,7 +17,12 @@
           <h2><span class="badge bg-secondary"><%= player_rank %><%= player_rank == 1 ? "er" : "ème" %></span></h2>
           <h2><span class="badge bg-warning"><%= player_score %> pts</span></h2>
           <% if project %>
-            <h2><span class="badge bg-primary"><i class="fab fa-github"></i><a class="text-info" href="<%= project.repo_url %>"> <%= project.name %></a></span></h2>
+            <h2>
+              <span class="badge bg-primary">
+                <i class="fab fa-github"></i>
+                <%= link_to project.name, project.repo_url, class: "text-info", target: "_blank" %>
+              </span>
+            </h2>
           <% end %>
         </div>
       </div>

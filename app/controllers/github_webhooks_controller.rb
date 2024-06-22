@@ -1,4 +1,3 @@
-#TODO: Update this file to update the task status in real time
 class GithubWebhooksController < ActionController::API
   include GithubWebhook::Processor
 
@@ -21,7 +20,6 @@ class GithubWebhooksController < ActionController::API
   end
 
   def update_tasks(commit_message, repo_url, ref)
-    # branch_name = ref.split('/').last
     project = Project.find_by(repo_url: repo_url)
     return unless project
 
@@ -29,7 +27,6 @@ class GithubWebhooksController < ActionController::API
     return unless @task
 
     @task.update(done: true)
-    p "====Task update======"
     TaskChannel.broadcast_to("tasks", { task: @task, done: true})
   end
 end

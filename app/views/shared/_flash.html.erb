@@ -1,0 +1,21 @@
+<% flash.each do |key, message| %>
+  <div class="flash flash-<%= key %> alert alert-dismissible fade show" role="alert"
+  data-controller="flash">
+
+    <span>
+      <% if key == 'success' %>
+        <strong>Yay!</strong> 🎉 <%= message %>
+      <% elsif key == 'warning' %>
+        <strong>Mmh</strong> 🤔 <%= message %>
+      <% elsif key == 'danger' %>
+        <strong>Oops!</strong> 😱 <%= message %>
+      <% else %>
+        <%= message %>
+      <% end %>
+    </span>
+    &nbsp;
+    <a data-bs-dismiss="alert" aria-label="Close">
+      <i class="fas fa-times"></i>
+    </a>
+  </div>
+<% end %>

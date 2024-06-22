@@ -15,11 +15,11 @@
 }
 
 .nav-button {
-    margin: 25px;
-    padding: 10px 20px !important;
-    color: #8992A2 !important;
-    font-weight: bold !important;
-    font-family: 'Nunito', sans-serif !important;
+  margin: 25px;
+  padding: 10px 20px !important;
+  color: #8992a2 !important;
+  font-weight: bold !important;
+  font-family: "Nunito", sans-serif !important;
 }
 
 .nav-button:hover {
@@ -34,4 +34,19 @@
 .logo {
   width: auto !important;
   height: auto !important;
+}
+
+.navbarfixedtop {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1030;
+  background: linear-gradient(
+    30deg,
+    rgba(16, 33, 67, 1) 8%,
+    rgba(16, 33, 67, 1) 46%,
+    rgba(20, 50, 81, 1) 65%,
+    rgba(27, 79, 105, 1) 77%,
+    rgba(29, 113, 110, 1) 100%
+  );
 }

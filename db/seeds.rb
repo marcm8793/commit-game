@@ -34,7 +34,7 @@ languages_data = [
   { name: "Ruby", image_url: "https://s1.qwant.com/thumbr/474x316/b/a/7ff15d7e2e35bf4aec0e046dc44df06dec79091f864c4fc736b0505dc6fe40/th.jpg?u=https%3A%2F%2Ftse.mm.bing.net%2Fth%3Fid%3DOIP.-FJrVe8XmA4pZmwY7uVY6wHaE8%26pid%3DApi&q=0&b=1&p=0&a=0" },
   { name: "JS", image_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAg2n68y5tSKqRK_tw4ioZHQGT7zi1Piutng&s" },
   { name: "Python", image_url: "https://s1.qwant.com/thumbr/474x318/a/8/417a2d78b2d6fdce60552672c1d5d3211b1fa41318e76c25b6d202a7d39f74/th.jpg?u=https%3A%2F%2Ftse.mm.bing.net%2Fth%3Fid%3DOIP.hicFMnjJf8GyP0sleHrTbAHaE-%26pid%3DApi&q=0&b=1&p=0&a=0" },
-  { name: "C#", image_url: "https://s2.qwant.com/thumbr/474x236/6/a/7866f120c4d14b62d41f2d9bf1aae98cb030ded8fe84ae032138a4032a5de9/th.jpg?u=https%3A%2F%2Ftse.mm.bing.net%2Fth%3Fid%3DOIP.2vK9IOtv_dlDhZixA1lI7AHaDs%26pid%3DApi&q=0&b=1&p=0&a=0" },
+  { name: "C#", image_url: "https://s2.qwant.com/thumbr/474x266/4/a/a75e6d6e2ab009cca0c31135287b990079f883a08f639e5f0e5cb690803d4e/th.jpg?u=https://tse.mm.bing.net/th?id%3DOIP.lXTBTGCpfgSe2vtRk0fUFwHaEK%26pid%3DApi&q=0&b=1&p=0&a=0" },
   { name: "PHP", image_url: "https://www.iutbethune.org/wp-content/uploads/2022/10/PHP.jpg" },
   { name: "Java", image_url: "https://s2.qwant.com/thumbr/474x266/5/d/f85a15945073c685aa29ff3b9565306fa0fe75520f101744f68687f55e7dd3/th.jpg?u=https%3A%2F%2Ftse.mm.bing.net%2Fth%3Fid%3DOIP.-PpueYZ_g4I0noGF_QSgCAHaEK%26pid%3DApi&q=0&b=1&p=0&a=0" }
 ]

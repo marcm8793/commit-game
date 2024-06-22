@@ -18,8 +18,19 @@
   flex: 0 0 25%;
 }
 
+.no-overflow {
+  overflow: unset !important;
+}
+
 .large {
   flex: 0 0 50%;
+}
+
+.prize {
+  display: flex;
+  flex-direction: row;
+  height: 100px;
+  width: 100%;
 }
 
 .pic {
@@ -30,6 +41,10 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
+}
+
+.pic-prize {
+  border-radius: 30px !important;
 }
 
 .button_radius {

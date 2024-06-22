@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_06_20_181332) do
+ActiveRecord::Schema[7.1].define(version: 2024_06_22_085715) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -37,6 +37,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_20_181332) do
     t.boolean "active"
     t.bigint "category_id", null: false
     t.bigint "language_id", null: false
+    t.integer "slots"
     t.index ["category_id"], name: "index_arenas_on_category_id"
     t.index ["language_id"], name: "index_arenas_on_language_id"
     t.index ["user_id"], name: "index_arenas_on_user_id"

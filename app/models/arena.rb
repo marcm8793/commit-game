@@ -9,6 +9,7 @@ class Arena < ApplicationRecord
   validates :name, presence: true
   validates :description, presence: true
   validates :start_date, presence: true
+  validates :slots, presence: true, numericality: { only_integer: true, greater_than: 0 }
 
   after_create :create_chatroom
 

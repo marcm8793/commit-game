@@ -39,7 +39,7 @@ class ArenasController < ApplicationController
   end
 
   def set_total_weeks_and_current_week
-    reference_date = Date.new(2024, 10, 5)
+    reference_date = Date.new(2024, 10, 4)
     if @arena.start_date && @arena.end_date
       @total_weeks = ((@arena.end_date - @arena.start_date).to_i / 7.0).ceil
       @current_week = (( reference_date- @arena.start_date).to_i / 7) + 1

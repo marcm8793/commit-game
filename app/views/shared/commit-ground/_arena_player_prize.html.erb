@@ -1,8 +1,18 @@
-<div class="card small dashboard">
-  <div class="card-body">
-    <%= image_tag "coupe.svg" %>
-  </div>
-    <div class="card-body d-flex justify-content-center">
-      <h1><span class="badge bg-secondary"><%= @arena.prize %> €</span></h1>
+<div class="card small dashboard no-overflow">
+  <div class="row justify-content-center">
+    <div class="mx-auto my-3" style="width: 70%;">
+      <img src="<%= @arena.image_url %>" class="card-img-top pic-prize" alt="<%= @arena.name %>">
     </div>
+    <h3 class="text-center mt-1">⚔️ <%= @arena.name %></h3>
+  </div>
+  <div class="prize justify-content-around my-2">
+    <div class="column align-self-center">
+      <h3><span class="badge bg-secondary">🏆 <%= @arena.prize %> €</span></h3>
+    </div>
+    <div class="column">
+      <h5>🥇 <%= (@arena.prize*0.5).round %> €</h5>
+      <h5>🥈 <%= (@arena.prize*0.3).round %> €</h5>
+      <h5>🥉 <%= (@arena.prize*0.2).round %> €</h5>
+    </div>
+  </div>
 </div>

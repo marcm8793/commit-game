@@ -2,6 +2,7 @@
   <h1 class="my-4">Your Arenas</h1>
 
   <ul class="nav nav-tabs d-flex justify-content-between align-items-center mb-4" id="arenaTabs" role="tablist">
+ <ul class="nav nav-tabs d-flex justify-content-between align-items-center mb-4" id="arenaTabs" role="tablist">
     <%# <div class="d-flex">
       <li class="nav-item" role="presentation">
         <a class="nav-link active" id="created-arenas-tab" data-bs-toggle="tab" href="#created-arenas" role="tab" aria-controls="created-arenas" aria-selected="true">Created Arenas</a>
@@ -13,6 +14,31 @@
     <%= link_to 'Create Arena', new_arena_path, class: 'btn btn-primary' %>
   </ul>
 
+<div class="filter_card w-75 mx-auto">
+  <div class="card-body">
+    <%= form_with url: arenas_path, method: :get, local: true, class: "row g-3 filter-form align-items-end" do |form| %>
+      <div class="col-md-2">
+        <%= form.text_field :name, class: "form-control", placeholder: "Name" %>
+      </div>
+
+      <div class="col-md-2">
+        <%= form.text_field :language, class: "form-control", placeholder: "Which Language" %>
+      </div>
+
+      <div class="col-md-2">
+        <%= form.date_field :start_date, class: "form-control", placeholder: "Date" %>
+      </div>
+
+      <div class="col-md-2">
+        <%= form.text_field :bid, value: "Your max bid?", class: "form-control", placeholder: "Bid" %>
+      </div>
+
+      <div class="col-md-2">
+        <%= form.submit "Filter", class: "btn btn-primary" %>
+      </div>
+    <% end %>
+  </div>
+</div>
 
  <div class="row">
     <div class="col">

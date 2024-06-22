@@ -8,6 +8,22 @@ class ArenasController < ApplicationController
     @created_arenas = current_user.arenas
     @joined_arenas = Arena.joins(:arena_players).where(arena_players: { user_id: current_user.id }).distinct
     @arenas = Arena.all
+
+    if params[:name].present?
+      @arenas = @arenas.where('name ILIKE ?', "%#{params[:name]}%")
+    end
+
+    if params[:language].present?
+      @arenas = @arenas.joins(:language).where('language.name ILIKE ?', "%#{params[:language]}%")
+    end
+
+    if params[:start_date].present?
+      @arenas = @arenas.where(start_date: params[:start_date])
+    end
+
+    if params[:prize].present?
+      @arenas = @arenas.where('bid <= ?', params[:prize])
+    end
   end
 
   def show
@@ -50,6 +66,6 @@ class ArenasController < ApplicationController
   end
 
   def arena_params
-    params.require(:arena).permit(:name, :description, :start_date, :end_date, :image_url, :prize, :active, :slots)
+    params.require(:arena).permit(:name, :description, :start_date, :end_date, :image_url, :prize, :active, :slots, :language)
   end
 end

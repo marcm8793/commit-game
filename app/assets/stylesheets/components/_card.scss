@@ -62,3 +62,28 @@
     height: auto;
   }
 }
+
+.filter_card{
+  display: flex;
+  padding-left: ($spacer * 1) !important;
+  padding-right: ($spacer * 1) !important;
+  padding-top: ($spacer * 1) !important;
+  padding-bottom: ($spacer * 1) !important;
+  border-radius: 80px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: none;
+  overflow: auto;
+  margin-bottom: 60px;
+}
+
+.form-control {
+  background-color: transparent;
+  border: none;
+}
+
+.form-control:focus,
+.form-control:active {
+  background-color: initial !important; /* Réinitialiser la couleur de fond */
+  box-shadow: none !important; /* Supprimer toute ombre portée */
+  border-color: white !important; /* Réinitialiser la couleur de la bordure */
+}

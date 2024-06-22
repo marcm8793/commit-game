@@ -24,6 +24,12 @@
 
 .pic {
   border-radius: 30px !important;
+  width: 400px;
+  height: 250px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 }
 
 .button_radius {

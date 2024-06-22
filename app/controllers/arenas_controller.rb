@@ -50,6 +50,6 @@ class ArenasController < ApplicationController
   end
 
   def arena_params
-    params.require(:arena).permit(:name, :description, :start_date, :end_date, :image_url, :prize, :active)
+    params.require(:arena).permit(:name, :description, :start_date, :end_date, :image_url, :prize, :active, :slots)
   end
 end

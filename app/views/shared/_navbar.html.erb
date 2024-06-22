@@ -5,6 +5,11 @@
         <%= image_tag "Logo_.png" %>
       <% end %>
       <span class="navbar-text">
+        <% if current_user && current_user_active_arena %>
+          <%= link_to 'CommitGround', arena_path(current_user_active_arena), class: 'nav-link d-inline p-0 nav-button' %>
+        <% else %>
+          <%= link_to 'No Active Arena', '#', class: 'nav-link d-inline p-0 nav-button' %>
+        <% end %>
         <%= link_to 'CommitGround', arena_path(1),class: 'nav-link d-inline p-0 nav-button'%>
       </span>
       <span class="navbar-text ms-2">

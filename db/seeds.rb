@@ -60,7 +60,7 @@ end
 puts "---- Creating Arenas ----"
 
 arenas_data = [
-  { name: "ESL_master", description: "test", start_date: "2024-09-07", end_date: "2024-10-12", image_url: languages.find { |lang| lang.name == "Ruby" }.image_url, user_id: users.find { |u| u.pseudo == "victorcariou1" }.id, slots: 4, prize: 100, active: true, language_id: languages.find { |lang| lang.name == "Ruby" }.id, category_id: categories.find { |cat| cat.name == "Débutant" }.id },
+  { name: "1540_Coding_Game", description: "test", start_date: "2024-09-07", end_date: "2024-10-12", image_url: languages.find { |lang| lang.name == "Ruby" }.image_url, user_id: users.find { |u| u.pseudo == "victorcariou1" }.id, slots: 4, prize: 100, active: true, language_id: languages.find { |lang| lang.name == "Ruby" }.id, category_id: categories.find { |cat| cat.name == "Débutant" }.id },
   { name: "Code_Coliseum", description: "test", start_date: "2024-10-19", end_date: "2024-11-23", image_url: languages.sample.image_url, user_id: users.sample.id, slots: 10, prize: 250, active: false, language_id: languages.sample.id, category_id: categories.find { |cat| cat.name == "Intermédiaire" }.id },
   { name: "Debugging_Dome", description: "test", start_date: "2024-10-26", end_date: "2024-11-30", image_url: languages.sample.image_url, user_id: users.sample.id, slots: 7, prize: 175, active: false, language_id: languages.sample.id, category_id: categories.find { |cat| cat.name == "Expert" }.id },
   { name: "Byte_Battlefield", description: "test", start_date: "2024-11-02", end_date: "2024-12-07", image_url: languages.sample.image_url, user_id: users.sample.id, slots: 8, prize: 200, active: false, language_id: languages.sample.id, category_id: categories.find { |cat| cat.name == "Débutant" }.id },
@@ -95,8 +95,8 @@ arenas = arenas_data.map do |arena_data|
   if arena.name == "ESL_master"
     first_arena_players_data = [
       { pseudo: "FlanBer", project_name: "TaDAH-Match", repo_url: "https://github.com/FlanBer/TaDAH-List" },
-      { pseudo: "marcm8793", project_name: "flex-space", repo_url: "https://github.com/marcm8793/flex-space-app" },
-      { pseudo: "Lucas-Dimarellis", project_name: "Stupid-Coaching", repo_url: "https://github.com/Lucas-Dimarellis/rails-stupid-coaching" },
+      { pseudo: "marcm8793", project_name: "Crypto-DEX-SONIC", repo_url: "https://github.com/marcm8793/Crypto-DEX-SONIC" },
+      { pseudo: "Lucas-Dimarellis", project_name: "OpenMarket:", repo_url: "https://github.com/Lucas-Dimarellis/OpenMarket.git" },
       { pseudo: "victorcariou1", project_name: "Next-Social", repo_url: "https://github.com/victorcariou1/next-social" }
     ]
 

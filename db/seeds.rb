@@ -46,9 +46,9 @@ languages = languages_data.map do |language_data|
 end
 
 categories_data = [
-  { name: "Débutant" },
-  { name: "Intermédiaire" },
-  { name: "Expert" }
+  { name: "Beginner 🟢" },
+  { name: "Intermediate 🟠" },
+  { name: "Expert 🔴" }
 ]
 
 categories = categories_data.map do |category_data|

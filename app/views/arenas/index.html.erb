@@ -1,82 +1,131 @@
-<div class="container">
-  <h1 class="my-4">Your Arenas</h1>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Arenas</title>
+  <style>
+    .confetti {
+      width: 10px;
+      height: 10px;
+      position: fixed;
+      animation: fall linear infinite;
+    }
+    @keyframes fall {
+      0% {
+        transform: translateY(-10vh) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh) rotate(720deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <% if @arena_just_created %>
+    <div id="confetti-container"></div>
+    <script>
+      console.log("Arena just created, creating dense falling confetti");
+      function createDenseConfetti() {
+        const container = document.getElementById('confetti-container');
+        const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff', '#ffffff', '#ffa500', '#800080'];
 
-  <ul class="nav nav-tabs d-flex justify-content-between align-items-center mb-4" id="arenaTabs" role="tablist">
- <ul class="nav nav-tabs d-flex justify-content-between align-items-center mb-4" id="arenaTabs" role="tablist">
-    <%# <div class="d-flex">
-      <li class="nav-item" role="presentation">
-        <a class="nav-link active" id="created-arenas-tab" data-bs-toggle="tab" href="#created-arenas" role="tab" aria-controls="created-arenas" aria-selected="true">Created Arenas</a>
-      </li>
-      <li class="nav-item" role="presentation">
-        <a class="nav-link" id="joined-arenas-tab" data-bs-toggle="tab" href="#joined-arenas" role="tab" aria-controls="joined-arenas" aria-selected="false">Joined Arenas</a>
-      </li>
-    </div> %>
-    <%= link_to 'Create Arena', new_arena_path, class: 'btn btn-primary' %>
-  </ul>
+        for (let i = 0; i < 500; i++) {
+          const confetti = document.createElement('div');
+          confetti.className = 'confetti';
 
-<div class="filter_card w-75 mx-auto">
-  <div class="card-body">
-    <%= form_with url: arenas_path, method: :get, local: true, class: "row g-3 filter-form align-items-end" do |form| %>
-      <div class="col-md-2">
-        <%= form.text_field :name, class: "form-control", placeholder: "Name" %>
-      </div>
+          confetti.style.left = `${Math.random() * 100}vw`;
+          confetti.style.top = `-10px`;
+          confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+          confetti.style.animationDuration = `${3 + Math.random() * 5}s`;
+          confetti.style.animationDelay = `${Math.random() * 5}s`;
 
-      <div class="col-md-2">
-        <%= form.text_field :language, class: "form-control", placeholder: "Which Language" %>
-      </div>
+          // Randomize size for varied effect
+          const size = 5 + Math.random() * 10;
+          confetti.style.width = `${size}px`;
+          confetti.style.height = `${size}px`;
 
-      <div class="col-md-2">
-        <%= form.date_field :start_date, class: "form-control", placeholder: "Date" %>
-      </div>
+          container.appendChild(confetti);
+        }
+      }
 
-      <div class="col-md-2">
-        <%= form.text_field :bid, value: "Your max bid?", class: "form-control", placeholder: "Bid" %>
-      </div>
+      // Create initial burst of confetti
+      createDenseConfetti();
 
-      <div class="col-md-2">
-        <%= form.submit "Filter", class: "btn btn-primary" %>
-      </div>
-    <% end %>
-  </div>
-</div>
+      // Continue adding confetti every second for 5 seconds
+      let count = 0;
+      const interval = setInterval(() => {
+        createDenseConfetti();
+        count++;
+        if (count >= 5) clearInterval(interval);
+      }, 1000);
+    </script>
+  <% end %>
 
- <div class="row">
-    <div class="col">
-      <p><%= @arenas.count %> arenas available.</p>
-    </div>
-  </div class="row">
+  <div class="container">
+    <h1>Arenas Index</h1>
 
-
-<div class="row mb-4">
-  <% @arenas.each_with_index do |arena, index| %>
-    <div class="col-md-4 mt-4">
-      <div class="card">
-      <div>
-       <% if arena.image_url.present? %>
-          <img src="<%= arena.image_url %>" class="card-img-top pic" alt="<%= arena.name %>">
+    <div class="filter_card w-75 mx-auto">
+      <div class="card-body">
+        <%= form_with url: arenas_path, method: :get, local: true, class: "row g-3 filter-form align-items-end" do |form| %>
+          <div class="col-md-2">
+            <%= form.text_field :name, class: "form-control", placeholder: "Name" %>
+          </div>
+          <div class="col-md-2">
+            <%= form.text_field :language, class: "form-control", placeholder: "Which Language" %>
+          </div>
+          <div class="col-md-2">
+            <%= form.date_field :start_date, class: "form-control", placeholder: "Date" %>
+          </div>
+          <div class="col-md-2">
+            <%= form.text_field :bid, value: "Your max bid?", class: "form-control", placeholder: "Bid" %>
+          </div>
+          <div class="col-md-2">
+            <%= form.submit "Filter", class: "btn btn-primary" %>
+          </div>
         <% end %>
       </div>
-        <div class="card-body">
-        <div class="d-flex justify-content-between align-items-center w-100">
-          <h5 class="card-title text-primary"><%= arena.name %></h5>
-          <a href="<%= arena_path(arena) %>" class="btn btn-primary button_radius">Join</a>
-        </div>
-        <div class="mt-2 d-flex justify-content-between align-items-center w-75">
-          <span style="height: 20px; line-height: 20px;">
-          <i class="fa-solid fa-calendar" style="color: #ffffff;"></i>
-          <%= arena.start_date %>
-          </span>
-          <span style="height: 20px; line-height: 20px;">
-          <i class="fa-solid fa-euro-sign" style="color: #ffffff;"></i>
-          <%= arena.prize %>
-          </span>
-          <span style="height: 20px; line-height: 20px;">
-          <i class="fa-solid fa-person" style="color: #ffffff;"></i>
-          <%= arena.slots %>
-          </span>
-        </div>
-        </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <p><%= @arenas.count %> arenas available.</p>
       </div>
     </div>
-  <% end %>
-</div>
+
+    <div class="row mb-4">
+      <% @arenas.each_with_index do |arena, index| %>
+        <div class="col-md-4 mt-4">
+          <div class="card">
+            <div>
+              <% if arena.image_url.present? %>
+                <img src="<%= arena.image_url %>" class="card-img-top pic" alt="<%= arena.name %>">
+              <% end %>
+            </div>
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-center w-100">
+                <h5 class="card-title text-primary"><%= arena.name %></h5>
+                <a href="<%= arena_path(arena) %>" class="btn btn-primary button_radius">Join</a>
+              </div>
+              <div class="mt-2 d-flex justify-content-between align-items-center w-75">
+                <span style="height: 20px; line-height: 20px;">
+                  <i class="fa-solid fa-calendar" style="color: #ffffff;"></i>
+                  <%= arena.start_date %>
+                </span>
+                <span style="height: 20px; line-height: 20px;">
+                  <i class="fa-solid fa-euro-sign" style="color: #ffffff;"></i>
+                  <%= arena.prize %>
+                </span>
+                <span style="height: 20px; line-height: 20px;">
+                  <i class="fa-solid fa-person" style="color: #ffffff;"></i>
+                  <%= arena.slots %>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</body>
+</html>

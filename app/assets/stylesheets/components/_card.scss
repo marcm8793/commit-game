@@ -63,7 +63,7 @@
   }
 }
 
-.filter_card{
+.filter_card {
   display: flex;
   padding-left: ($spacer * 1) !important;
   padding-right: ($spacer * 1) !important;
@@ -77,13 +77,6 @@
 }
 
 .form-control {
-  background-color: transparent;
   border: none;
-}
-
-.form-control:focus,
-.form-control:active {
-  background-color: initial !important; /* Réinitialiser la couleur de fond */
-  box-shadow: none !important; /* Supprimer toute ombre portée */
-  border-color: white !important; /* Réinitialiser la couleur de la bordure */
+  color: black;
 }

@@ -1,0 +1,50 @@
+<!-- app/views/profiles/show.html.erb -->
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-3">
+      <div class="card">
+        <img src="<%= @github_user.avatar_url %>" class="card-img-top img-fluid" alt="<%= @user.pseudo %>" style="max-width: 200px; margin: auto;">
+        <div class="card-body">
+          <h5 class="card-title"><%= @github_user.name || @user.pseudo %></h5>
+          <p class="card-text"><small><%= @github_user.bio %></small></p>
+        </div>
+        <ul>
+          <li ><small>Followers: <%= @github_user.followers %></small></li>
+          <li><small>Following: <%= @github_user.following %></small></li>
+          <li><small>Public Repos: <%= @github_user.public_repos %></small></li>
+        </ul>
+        <div class="card-body">
+          <a href="<%= @github_user.html_url %>" class="card-link" target="_blank"><i class="fa-brands fa-square-github"></i><small>  GitHub Profile</small></a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-9">
+      <h4 class="mb-3">Repositories</h4>
+      <div class="repo-list">
+        <% @repos.each do |repo| %>
+          <div class="mb-2">
+            <a href="<%= repo.html_url %>" class="text-decoration-none" target="_blank">
+              <strong><%= repo.name %></strong>
+            </a>
+            <small class="text-muted ms-2"><%= repo.language %></small>
+            <p class="mb-1"><small><%= repo.description %></small></p>
+            <small class="text-muted">Stars: <%= repo.stargazers_count %> | Forks: <%= repo.forks_count %></small>
+          </div>
+        <% end %>
+      </div>
+
+      <h4 class="mt-4 mb-3">Recent Activity</h4>
+      <div class="activity-list">
+        <% @events.take(5).each do |event| %>
+          <div class="mb-2">
+            <small>
+              <strong><%= event.type.gsub('Event', '') %></strong> on
+              <a href="https://github.com/<%= event.repo.name %>" target="_blank"><%= event.repo.name %></a>
+              at <%= event.created_at.strftime("%B %d, %Y %H:%M") %>
+            </small>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

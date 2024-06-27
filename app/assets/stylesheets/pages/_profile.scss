@@ -1,0 +1,20 @@
+.repo-list > div,
+.activity-list > div {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e1e4e8;
+}
+
+.repo-list > div:last-child,
+.activity-list > div:last-child {
+  border-bottom: none;
+}
+
+.repo-list a,
+.activity-list a {
+  color: #0366d6;
+}
+
+.repo-list a:hover,
+.activity-list a:hover {
+  text-decoration: underline !important;
+}

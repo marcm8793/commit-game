@@ -11,6 +11,9 @@ export default class extends Controller {
     "image",
     "prize",
     "slots",
+    "category",
+    "categorySelect",
+    "languageSelect",
   ];
 
   connect() {
@@ -68,7 +71,29 @@ export default class extends Controller {
       case "slots":
         this.slotsTarget.textContent = value;
         break;
+      case "category_id":
+        const selectedCategory = input.options[input.selectedIndex].text;
+        console.log(selectedCategory);
+        this.categoryTarget.textContent = selectedCategory;
+        break;
+      case "language_id":
+        this.updateLanguageImage(value);
+        break;
     }
+  }
+
+  updateLanguageImage(languageId) {
+    fetch(`/languages/${languageId}`)
+      .then((response) => response.json())
+      .then((data) => {
+        this.imageTarget.src = data.image_url;
+        this.imageTarget.alt = `Image for ${
+          this.languageSelectTarget.options[
+            this.languageSelectTarget.selectedIndex
+          ].text
+        }`;
+      })
+      .catch((error) => console.error("Error:", error));
   }
 
   updateEndDate(startDate) {

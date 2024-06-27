@@ -96,7 +96,7 @@ arenas = arenas_data.map do |arena_data|
     first_arena_players_data = [
       { pseudo: "FlanBer", project_name: "TaDAH-Match", repo_url: "https://github.com/FlanBer/TaDAH-List" },
       { pseudo: "marcm8793", project_name: "Crypto-DEX-SONIC", repo_url: "https://github.com/marcm8793/Crypto-DEX-SONIC" },
-      { pseudo: "Lucas-Dimarellis", project_name: "OpenMarket:", repo_url: "https://github.com/Lucas-Dimarellis/OpenMarket.git" },
+      { pseudo: "Lucas-Dimarellis", project_name: "OpenMarket", repo_url: "https://github.com/Lucas-Dimarellis/OpenMarket.git" },
       { pseudo: "victorcariou1", project_name: "Next-Social", repo_url: "https://github.com/victorcariou1/next-social" }
     ]
 

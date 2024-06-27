@@ -59,6 +59,11 @@
         count++;
         if (count >= 5) clearInterval(interval);
       }, 1000);
+
+      setTimeout(() => {
+        const confetti = document.querySelectorAll('.confetti');
+        confetti.forEach((c) => c.remove());
+      }, 12000);
     </script>
   <% end %>
 

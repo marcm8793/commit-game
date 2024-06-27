@@ -1,4 +1,3 @@
-//TODO: Update this file to update the task status in real time
 import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {

@@ -14,7 +14,7 @@
       <div class="card-body">
         <div class="d-flex justify-content-around">
           <%= image_tag(player.user.avatar_url, alt: player.user.pseudo, class: "rounded-circle", style: "width: 40px; height: 40px;") %>
-          <h2><span class="badge bg-secondary"><%= player_rank %><%= player_rank == 1 ? "er" : "ème" %></span></h2>
+          <h2><span class="badge bg-secondary"><%= player_rank %><%= case player_rank % 10  when 1 then 'st'  when 2 then 'nd'  when 3 then 'rd'  else 'th' end %></span></h2>
           <h2><span class="badge bg-warning"><%= player_score %> pts</span></h2>
           <% if project %>
             <h2>

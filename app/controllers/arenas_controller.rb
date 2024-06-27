@@ -5,17 +5,21 @@ class ArenasController < ApplicationController
   before_action :set_total_weeks_and_current_week, only: [:show]
 
   def index
-    @arena_just_created = session.delete(:arena_created)# Debug log
+    @arena_just_created = session.delete(:arena_created)
     @created_arenas = current_user.arenas
     @joined_arenas = Arena.joins(:arena_players).where(arena_players: { user_id: current_user.id }).distinct
-    @arenas = Arena.order(created_at: :desc)
+    @arenas = Arena.includes(:category).order(created_at: :desc)
 
     if params[:name].present?
       @arenas = @arenas.where('name ILIKE ?', "%#{params[:name]}%")
     end
 
-    if params[:language].present?
-      @arenas = @arenas.joins(:language).where('language.name ILIKE ?', "%#{params[:language]}%")
+    if params[:language_id].present?
+      @arenas = @arenas.joins(:language).where( 'languages.id = ?', params[:language_id])
+    end
+
+    if params[:category_id].present?
+      @arenas = @arenas.where(category_id: params[:category_id])
     end
 
     if params[:start_date].present?

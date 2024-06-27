@@ -1,0 +1,10 @@
+.transparent-background {
+  background-color: transparent;
+}
+
+.transparent-background:focus,
+.transparent-background:active {
+  background-color: initial !important;
+  box-shadow: none !important;
+  border-color: white !important;
+}

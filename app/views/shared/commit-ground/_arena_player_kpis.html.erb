@@ -29,7 +29,7 @@
     </div>
     <div class="card-body">
       <div class="d-inline-flex">
-        <h5 class="card-title">Tâches</h5>
+        <h5 class="card-title">Tasks</h5>
       </div>
       <div class="progress">
         <div class="progress-bar bg-warning" role="progressbar" style="width: <%= task_completion_percentage %>%;" aria-valuenow="<%= task_completion_percentage %>" aria-valuemin="0" aria-valuemax="100"><%= task_completion_percentage %>% completed</div>
@@ -37,7 +37,7 @@
     </div>
     <div class="card-body">
       <div class="d-inline-flex">
-        <h5 class="card-title">Semaines</h5>
+        <h5 class="card-title">Weeks</h5>
       </div>
       <div class="progress">
         <div class="progress-bar progress-bar-weeks bg-secondary" role="progressbar" style="width: <%= (@current_week.to_f / @total_weeks * 100).round %>%;" aria-valuenow="<%= @current_week %>" aria-valuemin="0" aria-valuemax="100"><%= @current_week %> weeks</div>

@@ -5,6 +5,7 @@ class ArenasController < ApplicationController
   before_action :set_total_weeks_and_current_week, only: [:show]
 
   def index
+    @arena_just_created = session.delete(:arena_created)# Debug log
     @created_arenas = current_user.arenas
     @joined_arenas = Arena.joins(:arena_players).where(arena_players: { user_id: current_user.id }).distinct
     @arenas = Arena.all
@@ -38,11 +39,14 @@ class ArenasController < ApplicationController
     @arena = Arena.new(arena_params)
     @arena.user = current_user
     if @arena.save
-      redirect_to @arena
+      session[:arena_created] = true
+      redirect_to arenas_path
+      flash[:success] = 'Arena created successfully'
     else
       render :new
     end
   end
+
 
   private
 
@@ -66,6 +70,6 @@ class ArenasController < ApplicationController
   end
 
   def arena_params
-    params.require(:arena).permit(:name, :description, :start_date, :end_date, :image_url, :prize, :active, :slots, :language)
+    params.require(:arena).permit(:name, :description, :start_date, :end_date, :image_url, :prize, :active, :slots, :language_id, :category_id)
   end
 end

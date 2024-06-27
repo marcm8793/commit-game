@@ -92,7 +92,7 @@ arenas = arenas_data.map do |arena_data|
   arena = Arena.create!(arena_data)
   puts "Arena created: #{arena.name} - #{arena.active}"
 
-  if arena.name == "ESL_master"
+  if arena.name == "1540_Coding_Game"
     first_arena_players_data = [
       { pseudo: "FlanBer", project_name: "TaDAH-Match", repo_url: "https://github.com/FlanBer/TaDAH-List" },
       { pseudo: "marcm8793", project_name: "Crypto-DEX-SONIC", repo_url: "https://github.com/marcm8793/Crypto-DEX-SONIC" },
@@ -190,89 +190,3 @@ puts "Creating additional random Commits..."
 end
 
 puts "Seeding completed!"
-
-
-
-# # Ensure each user is an ArenaPlayer and distribute them across the arenas
-# users.shuffle.each_with_index do |user, index|
-#   arena = arenas[index % arenas.length]
-#   player = ArenaPlayer.create!(
-#     user: user,
-#     arena: arena,
-#     score: Faker::Number.between(from: 0, to: 100)
-#   )
-#   arena_players << player
-#   puts "Arena Player created: #{player.user.email} - #{player.arena.name} - #{player.score}"
-
-#   # Create a project for each arena player
-#   project = Project.create!(
-#     arena_player: player,
-#     repo_url: Faker::Internet.url,
-#     name: Faker::App.name,
-#   )
-#   projects << project
-#   puts "Project created: #{project.name} for ArenaPlayer ID: #{player.id}"
-
-#   # Create tasks for each week for the arena player
-#   (1..5).each do |week|
-#     task = Task.create!(
-#       name: Faker::Verb.base,
-#       description: Faker::Lorem.paragraph,
-#       score: Faker::Number.between(from: 1, to: 10),
-#       week_number: week,
-#       arena_player: player,
-#       done: Faker::Boolean.boolean,
-#     )
-#     puts "Task created: #{task.name} for ArenaPlayer ID: #{task.arena_player_id} - Week #{week}"
-#   end
-# end
-
-# # Ensure each arena has exactly 5 ArenaPlayers
-# arenas.each do |arena|
-#   current_arena_players = arena.arena_players.count
-#   additional_players_needed = 5 - current_arena_players
-#   if additional_players_needed > 0
-#     additional_users = (users - arena.users).shuffle.take(additional_players_needed)
-#     additional_users.each do |user|
-#       player = ArenaPlayer.create!(
-#         user: user,
-#         arena: arena,
-#         score: Faker::Number.between(from: 0, to: 100)
-#       )
-#       arena_players << player
-#       puts "Additional Arena Player created: #{player.user.email} - #{player.arena.name} - #{player.score}"
-
-#       # Create a project for each additional arena player
-#       project = Project.create!(
-#         arena_player: player,
-#         repo_url: Faker::Internet.url,
-#         name: Faker::App.name,
-#       )
-#       projects << project
-#       puts "Project created: #{project.name} for ArenaPlayer ID: #{player.id}"
-
-#       # Create tasks for each week for the additional arena player
-#       (1..5).each do |week|
-#         task = Task.create!(
-#           name: Faker::Verb.base,
-#           description: Faker::Lorem.paragraph,
-#           score: Faker::Number.between(from: 1, to: 10),
-#           week_number: week,
-#           arena_player: player,
-#           done: Faker::Boolean.boolean,
-#         )
-#         puts "Task created: #{task.name} for ArenaPlayer ID: #{task.arena_player_id} - Week #{week}"
-#       end
-#     end
-#   end
-# end
-
-# # Create additional random Commits
-# 30.times do
-#   commit = Commit.create!(
-#     project: projects.sample,
-#   )
-#   puts "Commit created for Project ID: #{commit.project_id}"
-# end
-
-# puts "Seeding completed!"

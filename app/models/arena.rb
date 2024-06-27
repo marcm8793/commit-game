@@ -8,7 +8,6 @@ class Arena < ApplicationRecord
   has_many :users, through: :arena_players
 
   validates :name, presence: true
-  validates :description, presence: true
   validates :start_date, presence: true
   validates :slots, presence: true, numericality: { only_integer: true, greater_than: 0 }
 

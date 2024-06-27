@@ -14,7 +14,7 @@
       <div class="card-body">
         <div class="d-flex justify-content-around">
           <%= image_tag(player.user.avatar_url, alt: player.user.pseudo, class: "rounded-circle", style: "width: 40px; height: 40px;") %>
-          <h2><span class="badge bg-secondary"><%= player_rank %><%= player_rank == 1 ? "er" : "ème" %></span></h2>
+          <h2><span class="badge bg-secondary"><%= player_rank %><%= case player_rank % 10  when 1 then 'st'  when 2 then 'nd'  when 3 then 'rd'  else 'th' end %></span></h2>
           <h2><span class="badge bg-warning"><%= player_score %> pts</span></h2>
           <% if project %>
             <h2>
@@ -29,7 +29,7 @@
     </div>
     <div class="card-body">
       <div class="d-inline-flex">
-        <h5 class="card-title">Tâches</h5>
+        <h5 class="card-title">Tasks</h5>
       </div>
       <div class="progress">
         <div class="progress-bar bg-warning" role="progressbar" style="width: <%= task_completion_percentage %>%;" aria-valuenow="<%= task_completion_percentage %>" aria-valuemin="0" aria-valuemax="100"><%= task_completion_percentage %>% completed</div>
@@ -37,7 +37,7 @@
     </div>
     <div class="card-body">
       <div class="d-inline-flex">
-        <h5 class="card-title">Semaines</h5>
+        <h5 class="card-title">Weeks</h5>
       </div>
       <div class="progress">
         <div class="progress-bar progress-bar-weeks bg-secondary" role="progressbar" style="width: <%= (@current_week.to_f / @total_weeks * 100).round %>%;" aria-valuenow="<%= @current_week %>" aria-valuemin="0" aria-valuemax="100"><%= @current_week %> weeks</div>

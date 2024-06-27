@@ -26,6 +26,10 @@ export default class extends Controller {
     this.blurTimeout = setTimeout(() => {
       this.cardTarget.style.filter = "none";
       this.updateCardContent(event);
+
+      if (event.target.name === "arena[start_date]") {
+        this.updateEndDate(event.target.value);
+      }
     }, 300);
   }
 
@@ -64,6 +68,21 @@ export default class extends Controller {
       case "slots":
         this.slotsTarget.textContent = value;
         break;
+    }
+  }
+
+  updateEndDate(startDate) {
+    if (startDate) {
+      const start = new Date(startDate);
+      if (!isNaN(start.getTime())) {
+        const end = new Date(start);
+        end.setDate(start.getDate() + 35); // 5 weeks later
+        this.end_dateTarget.textContent = end.toLocaleDateString();
+      } else {
+        this.end_dateTarget.textContent = "Invalid Date";
+      }
+    } else {
+      this.end_dateTarget.textContent = "";
     }
   }
 }

@@ -8,7 +8,7 @@ class ArenasController < ApplicationController
     @arena_just_created = session.delete(:arena_created)# Debug log
     @created_arenas = current_user.arenas
     @joined_arenas = Arena.joins(:arena_players).where(arena_players: { user_id: current_user.id }).distinct
-    @arenas = Arena.all
+    @arenas = Arena.order(created_at: :desc)
 
     if params[:name].present?
       @arenas = @arenas.where('name ILIKE ?', "%#{params[:name]}%")

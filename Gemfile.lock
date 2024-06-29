@@ -134,8 +134,7 @@ GEM
       faraday-net_http (>= 2.0, < 3.2)
     faraday-net_http (3.1.0)
       net-http
-    ffi (1.17.0-arm64-darwin)
-    ffi (1.17.0-x86_64-linux-gnu)
+    ffi (1.17.0)
     font-awesome-sass (6.5.2)
       sassc (~> 2.0)
     github_webhook (1.4.2)

@@ -56,6 +56,7 @@ gem "faker"
 gem "octokit"
 gem 'redis'
 gem 'github_webhook'
+gem 'rest-client'
 
 group :development, :test do
   gem "dotenv-rails"

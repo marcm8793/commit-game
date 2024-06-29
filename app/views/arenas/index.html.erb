@@ -30,15 +30,15 @@
         const container = document.getElementById('confetti-container');
         const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff', '#ffffff', '#ffa500', '#800080'];
 
-        for (let i = 0; i < 500; i++) {
+        for (let i = 0; i < 1000; i++) {
           const confetti = document.createElement('div');
           confetti.className = 'confetti';
 
           confetti.style.left = `${Math.random() * 100}vw`;
           confetti.style.top = `-10px`;
           confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-          confetti.style.animationDuration = `${3 + Math.random() * 5}s`;
-          confetti.style.animationDelay = `${Math.random() * 5}s`;
+          confetti.style.animationDuration = `${3 + Math.random() * 2}s`;
+          confetti.style.animationDelay = `${Math.random() * 2}s`;
 
           // Randomize size for varied effect
           const size = 5 + Math.random() * 10;
@@ -53,12 +53,12 @@
       createDenseConfetti();
 
       // Continue adding confetti every second for 5 seconds
-      let count = 0;
-      const interval = setInterval(() => {
-        createDenseConfetti();
-        count++;
-        if (count >= 5) clearInterval(interval);
-      }, 1000);
+      // let count = 0;
+      // const interval = setInterval(() => {
+      //   createDenseConfetti();
+      //   count++;
+      //   if (count >= 5) clearInterval(interval);
+      // }, 5000);
 
       setTimeout(() => {
         const confetti = document.querySelectorAll('.confetti');

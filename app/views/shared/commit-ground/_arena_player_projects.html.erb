@@ -42,7 +42,7 @@
             <% tasks_by_week[current_week]&.each do |task| %>
               <div class="task-item mt-2" data-task-id="<%= task.id %>" data-task-target="task">
                 <div class="form-check">
-                  <input class="form-check-input task-done" type="checkbox" value="" <%= 'checked' if task.done %> disabled>
+                  <input class="form-check-input task-done" type="checkbox" value="" <%= 'checked' if task.done %> disabled>&nbsp;
                   <label class="form-check-label task-name <%= 'text-decoration-line-through' if task.done %>"><%=task.name%> - <%=task.score%> pts</label>
                   <i class="fa fa-check text-success ml-2 <%= 'd-none' unless task.done %>"></i>
                 </div>

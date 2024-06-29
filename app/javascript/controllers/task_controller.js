@@ -18,6 +18,13 @@ export default class extends Controller {
             received: (data) => {
               console.log("Received data", data);
               if (data.task) {
+                // Set a flag in localStorage to show a flash message after reload
+                localStorage.setItem("showFlash", "true");
+                localStorage.setItem(
+                  "flashMessage",
+                  "Task updated successfully!"
+                );
+                localStorage.setItem("flashType", "success");
                 window.location.reload();
               } else {
                 console.error(
@@ -36,6 +43,11 @@ export default class extends Controller {
     } catch (error) {
       console.error("Error connecting controller", error);
     }
+
+    // Check if we need to show a flash message after reload
+    if (localStorage.getItem("showFlash") === "true") {
+      this.showFlashMessage();
+    }
   }
 
   disconnect() {
@@ -43,5 +55,34 @@ export default class extends Controller {
       console.log("Unsubscribing from TaskChannel");
       subscription.unsubscribe();
     });
+  }
+
+  showFlashMessage() {
+    const message = localStorage.getItem("flashMessage");
+    const type = localStorage.getItem("flashType");
+
+    if (message && type) {
+      const flashHtml = `
+        <div class="flash flash-${type} alert alert-dismissible fade show" role="alert" data-controller="flash">
+          <span>
+            ${type === "success" ? "<strong>Yay!</strong> 🎉 " : ""}
+            ${type === "warning" ? "<strong>Mmh</strong> 🤔 " : ""}
+            ${type === "danger" ? "<strong>Oops!</strong> 😱 " : ""}
+            ${message}
+          </span>
+          &nbsp;
+          <a data-bs-dismiss="alert" aria-label="Close">
+            <i class="fas fa-times"></i>
+          </a>
+        </div>
+      `;
+
+      document.body.insertAdjacentHTML("afterbegin", flashHtml);
+    }
+
+    // Clear the flash data from localStorage
+    localStorage.removeItem("showFlash");
+    localStorage.removeItem("flashMessage");
+    localStorage.removeItem("flashType");
   }
 }

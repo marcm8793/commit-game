@@ -34,7 +34,8 @@ export default class extends Controller {
 
       const label = document.createElement("label");
       label.classList.add("form-check-label");
-      if (task.done) label.classList.add("text-decoration-line-through");
+      if (task.done)
+        label.classList.add("text-decoration-line-through", "ps-4");
       label.innerHTML = `${task.name} - ${task.score} pts`;
 
       taskItem.appendChild(checkbox);

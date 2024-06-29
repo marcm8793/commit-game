@@ -33,7 +33,7 @@ puts "---- Creating Languages ----"
 languages_data = [
   { name: "Ruby", image_url: "https://s1.qwant.com/thumbr/474x316/b/a/7ff15d7e2e35bf4aec0e046dc44df06dec79091f864c4fc736b0505dc6fe40/th.jpg?u=https%3A%2F%2Ftse.mm.bing.net%2Fth%3Fid%3DOIP.-FJrVe8XmA4pZmwY7uVY6wHaE8%26pid%3DApi&q=0&b=1&p=0&a=0" },
   { name: "JS", image_url: "https://i.postimg.cc/Z5X4dsmW/Capture-d-e-cran-2024-06-27-a-20-45-09.png" },
-  { name: "Python", image_url: "https://i.postimg.cc/WbZZZgm1/python-commit-game.png" },
+  { name: "Python", image_url: "https://i.postimg.cc/Qt4VkSWn/Capture-d-e-cran-2024-06-29-a-10-24-43.png" },
   { name: "C#", image_url: "https://i.postimg.cc/cHpnkBfC/C-commit-game.png" },
   { name: "PHP", image_url: "https://i.postimg.cc/kGckYBK6/Php-commit-game.png" },
   { name: "Java", image_url: "https://i.postimg.cc/Tw2jq1dH/Java-commit-game.png" }

@@ -1,0 +1,49 @@
+.github-profile-link {
+  display: inline-block;
+  transition: transform 0.3s ease;
+  position: relative;
+}
+
+.github-profile-link:hover {
+  transform: scale(1.1);
+}
+
+.github-avatar {
+  border: 2px solid transparent;
+  transition: border-color 0.3s ease;
+}
+
+.github-profile-link:hover .github-avatar {
+  border-color: #0366d6; /* GitHub blue color */
+}
+
+.custom-tooltip {
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #333;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.custom-tooltip.show {
+  opacity: 1;
+}
+
+.custom-tooltip::before {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 0 5px 5px 5px;
+  border-style: solid;
+  border-color: transparent transparent #333 transparent;
+}

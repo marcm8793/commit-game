@@ -9,11 +9,17 @@
   <% player_rank = player.rank %>
   <% player_score = player.total_score %>
 
+  <%   github_client = Octokit::Client.new(access_token: ENV['GITHUB_ACCESS_TOKEN']) %>
+  <%   github_user = github_client.user(player.user.pseudo) %>
+  <%   github_profile_url = github_user.html_url %>
+
   <div class="card large dashboard">
     <div class="d-flex justify-content-between">
       <div class="card-body">
         <div class="d-flex justify-content-around">
-          <%= image_tag(player.user.avatar_url, alt: player.user.pseudo, class: "rounded-circle", style: "width: 40px; height: 40px;") %>
+          <%= link_to github_profile_url, target: "_blank", class: "github-profile-link", data: { controller: "github-profile", action: "mouseenter->github-profile#showTooltip mouseleave->github-profile#hideTooltip" } do %>
+            <%= image_tag(player.user.avatar_url, alt: player.user.pseudo, class: "rounded-circle github-avatar", style: "width: 40px; height: 40px;") %>
+          <% end %>
           <h2><span class="badge bg-secondary"><%= player_rank %><%= case player_rank % 10  when 1 then 'st'  when 2 then 'nd'  when 3 then 'rd'  else 'th' end %></span></h2>
           <h2><span class="badge bg-warning"><%= player_score %> pts</span></h2>
           <% if project %>

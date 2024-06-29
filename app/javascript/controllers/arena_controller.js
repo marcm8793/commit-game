@@ -1,4 +1,3 @@
-// app/javascript/controllers/arena_controller.js
 import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
@@ -14,6 +13,7 @@ export default class extends Controller {
     "category",
     "categorySelect",
     "languageSelect",
+    "imageUrlInput",
   ];
 
   connect() {
@@ -34,6 +34,13 @@ export default class extends Controller {
         this.updateEndDate(event.target.value);
       }
     }, 300);
+
+    const selectedLanguage = this.languageSelectTarget.selectedOptions[0];
+    if (selectedLanguage) {
+      const imageUrl = selectedLanguage.dataset.imageUrl;
+      this.imageTarget.src = imageUrl;
+      this.imageUrlInputTarget.value = imageUrl;
+    }
   }
 
   updateCardContent(event) {
@@ -87,6 +94,7 @@ export default class extends Controller {
       .then((response) => response.json())
       .then((data) => {
         this.imageTarget.src = data.image_url;
+        this.imageUrlInputTarget.value = data.image_url;
         this.imageTarget.alt = `Image for ${
           this.languageSelectTarget.options[
             this.languageSelectTarget.selectedIndex

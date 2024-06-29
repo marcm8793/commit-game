@@ -14,13 +14,25 @@
               </div>
             </div>
               <div class="row">
-                <div class="col-md-6">
+               <div class="col-md-6">
                   <%= f.input :category_id, collection: Category.all, label_method: :name, value_method: :id, label: 'Category', input_html: { class: 'form-control form-control-sm text-dark', data: { action: "change->arena#updateCard", arena_target: "categorySelect" } } %>
                 </div>
                 <div class="col-md-6">
-                  <%= f.input :language_id, collection: Language.all, label_method: :name, value_method: :id, label: 'Language', input_html: { class: 'form-control form-control-sm text-dark', data: { action: "change->arena#updateCard", arena_target: "languageSelect" } } %>
+                  <%= f.input :language_id,
+                              label: 'Language',
+                              as: :select,
+                              collection: Language.all.map { |language|
+                                [language.name, language.id, { 'data-image-url': language.image_url }]
+                              },
+                              input_html: {
+                                class: 'form-control form-control-sm text-dark',
+                                data: {
+                                  action: "change->arena#updateCard",
+                                  arena_target: "languageSelect"
+                                }
+                              } %>
+                   </div>
                 </div>
-              </div>
             <div class="row align-items-end">
               <div class="col-md-4">
                 <div class="form-group mb-0">
@@ -38,6 +50,7 @@
                 </div>
               </div>
             </div>
+            <%= f.input :image_url, as: :hidden, input_html: { data: { arena_target: "imageUrlInput" } } %>
             <div class="row">
               <div class="col-12 d-flex justify-content-between">
                 <%= link_to 'Back to Arenas', arenas_path, class: 'btn btn-secondary mt-3' %>
@@ -51,6 +64,7 @@
         <div class="card flex-grow-1 d-flex flex-column" data-arena-target="card">
           <%= image_tag '', class: 'card-img-top pic', alt: 'Arena Image', data: { arena_target: 'image' } %>
           <div class="card-body d-flex flex-column justify-content-between">
+             <h5 class="card-title" data-arena-target="name">Arena Name</h5>
             <div class="mt-2 d-flex justify-content-between align-items-center">
               <span>
                 <i class="fa-solid fa-calendar" style="color: #ffffff;"></i>

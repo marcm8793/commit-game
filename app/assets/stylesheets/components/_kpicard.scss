@@ -47,3 +47,32 @@
   border-style: solid;
   border-color: transparent transparent #333 transparent;
 }
+
+.project-link {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.project-link:hover {
+  transform: scale(1.1);
+}
+
+.project-link .badge {
+  display: inline-flex;
+  align-items: center;
+  transition: background-color 0.3s ease;
+}
+
+.project-link .badge .fab,
+.project-link .badge .project-link-text {
+  transition: color 0.3s ease;
+}
+
+.project-link:hover .badge {
+  background-color: #004085; /* Darker shade of blue for hover */
+}
+
+.project-link:hover .fab,
+.project-link:hover .project-link-text {
+  color: #ffffff; /* Change to white on hover */
+}

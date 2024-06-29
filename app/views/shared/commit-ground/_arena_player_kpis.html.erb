@@ -23,10 +23,10 @@
           <h2><span class="badge bg-secondary"><%= player_rank %><%= case player_rank % 10  when 1 then 'st'  when 2 then 'nd'  when 3 then 'rd'  else 'th' end %></span></h2>
           <h2><span class="badge bg-warning"><%= player_score %> pts</span></h2>
           <% if project %>
-            <h2>
+            <h2 class="project-link">
               <span class="badge bg-primary">
-                <i class="fab fa-github"></i>
-                <%= link_to project.name, project.repo_url, class: "text-info", target: "_blank" %>
+                <i class="fab fa-github"></i>&nbsp;
+                <%= link_to project.name, project.repo_url, class: "text-info project-link-text", target: "_blank" %>
               </span>
             </h2>
           <% end %>

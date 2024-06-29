@@ -5,12 +5,12 @@
     </div>
     <div class="list-group-flush">
       <% @arena_players.each_with_index do |arena_player, index| %>
-        <%= link_to arena_path(arena_player.arena, player_id: arena_player.id), class: 'list-group-item list-group-item-action d-flex justify-content-between align-items-center' do %>
+        <%= link_to arena_path(arena_player.arena, player_id: arena_player.id), class: 'list-group-item list-group-item-action d-flex justify-content-between align-items-center hover-effect' do %>
           <div class="d-inline-flex mt-2">
             <%= image_tag(arena_player.user.avatar_url, alt: arena_player.user.pseudo, class: "rounded-circle me-3", style: "width: 40px; height: 40px;") %>
             <div class="d-block-flex">
               <p><%= arena_player.user.pseudo %> </p>
-              <small class="text-muted">Score: <%= arena_player.total_score %> pts</small>
+              <small class="text-muted score-points">Score: <%= arena_player.total_score %> pts</small>
             </div>
           </div>
           <span class="badge bg-primary rounded-pill"><%= arena_player.rank %></span>

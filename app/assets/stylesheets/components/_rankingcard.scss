@@ -1,0 +1,16 @@
+.list-group-item.hover-effect {
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.list-group-item.hover-effect:hover {
+  background-color: #bcadee;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  color: black;
+  padding: 5px;
+}
+
+.list-group-item.hover-effect:hover .score-points {
+  color: black !important;
+}

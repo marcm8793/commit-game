@@ -1,6 +1,6 @@
 <div class="container mt-5">
   <div class="row">
-    <div class="col-md-3">
+    <div class="col-md-4">
       <div class="card">
         <img src="<%= @github_user.avatar_url %>" class="card-img-top img-fluid" alt="<%= @user.pseudo %>" style="max-width: 200px; margin: auto;">
         <div class="card-body">
@@ -8,6 +8,8 @@
           <p class="card-text"><small><%= @github_user.bio %></small></p>
         </div>
         <ul>
+          <li><small>Github pseudo: <%= current_user.pseudo %></small></li>
+          <li><small>@: <%= current_user.email %></small></li>
           <li ><small>Followers: <%= @github_user.followers %></small></li>
           <li><small>Following: <%= @github_user.following %></small></li>
           <li><small>Public Repos: <%= @github_user.public_repos %></small></li>
@@ -17,7 +19,7 @@
         </div>
       </div>
     </div>
-    <div class="col-md-9">
+    <div class="col-md-8">
       <h4 class="mb-3">Repositories</h4>
       <div class="repo-list">
         <% @repos.each do |repo| %>

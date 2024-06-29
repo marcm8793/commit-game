@@ -1,5 +1,5 @@
 <%- if controller_name != 'sessions' %>
-  <%= link_to "Log in", new_session_path(resource_name) %><br />
+  <%= link_to "Sign in", new_session_path(resource_name) %><br />
 <% end %>
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
@@ -20,6 +20,7 @@
 
 <%- if devise_mapping.omniauthable? %>
   <%- resource_class.omniauth_providers.each do |provider| %>
+    <hr>
     <%= button_to omniauth_authorize_path(resource_name, provider), data: { turbo: false }, class: "btn btn-primary text-center" do %>
       <i class="fa-brands fa-github"></i> Sign in with <%= OmniAuth::Utils.camelize(provider) %>
     <% end %><br />

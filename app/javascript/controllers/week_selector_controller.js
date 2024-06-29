@@ -24,7 +24,7 @@ export default class extends Controller {
     this.taskListTarget.innerHTML = "";
     tasks.forEach((task) => {
       const taskItem = document.createElement("div");
-      taskItem.classList.add("task-item", "mt-2");
+      taskItem.classList.add("task-item");
 
       const checkbox = document.createElement("input");
       checkbox.classList.add("form-check-input");
@@ -33,9 +33,9 @@ export default class extends Controller {
       if (task.done) checkbox.checked = true;
 
       const label = document.createElement("label");
-      label.classList.add("form-check-label");
+      label.classList.add("form-check-label", "ps-2");
       if (task.done)
-        label.classList.add("text-decoration-line-through", "ps-4");
+        label.classList.add("text-decoration-line-through", "ps-2");
       label.innerHTML = `${task.name} - ${task.score} pts`;
 
       taskItem.appendChild(checkbox);
@@ -43,7 +43,7 @@ export default class extends Controller {
 
       if (task.done) {
         const checkIcon = document.createElement("i");
-        checkIcon.classList.add("fa", "fa-check", "text-success", "ml-2");
+        checkIcon.classList.add("fa", "fa-check", "text-success", "ps-2");
         taskItem.appendChild(checkIcon);
       }
 

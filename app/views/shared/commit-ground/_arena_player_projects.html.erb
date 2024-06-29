@@ -40,13 +40,13 @@
           <h5 class="card-title">Weekly Tasks<span id="current-week-number" data-week-selector-target="currentWeekNumber" style="display: none;"><%= current_week %></span></h5>
           <div id="task-list" data-week-selector-target="taskList">
             <% tasks_by_week[current_week]&.each do |task| %>
-              <div class="task-item mt-2" data-task-id="<%= task.id %>" data-task-target="task">
+              <div class="task-item mt-2 align-items-center" data-task-id="<%= task.id %>" data-task-target="task">
                 <div class="form-check">
                   <input class="form-check-input task-done" type="checkbox" value="" <%= 'checked' if task.done %> disabled>&nbsp;
                   <label class="form-check-label task-name <%= 'text-decoration-line-through' if task.done %>"><%=task.name%> - <%=task.score%> pts</label>
-                  <i class="fa fa-check text-success ml-2 <%= 'd-none' unless task.done %>"></i>
+                  <i class="fa fa-check text-success ms-2 <%= 'd-none' unless task.done %>"></i>
                 </div>
-                <p class="task-description"><%= task.description %></p>
+                <p class="task-description ps-2"><%= task.description %></p>
                 <div class="task-score">Score: <%= task.score %></div>
               </div>
             <% end %>

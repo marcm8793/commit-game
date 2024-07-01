@@ -28,6 +28,6 @@ class GithubWebhooksController < ActionController::API
 
     @task.update(done: true)
     TaskChannel.broadcast_to("tasks", { task: @task, done: true})
-    flash[:success] = "Task updated successfully!"
+    flash[:success] = "New Commit, Task and Ranking Updated! 🏆"
   end
 end

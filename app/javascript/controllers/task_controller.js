@@ -22,7 +22,7 @@ export default class extends Controller {
                 localStorage.setItem("showFlash", "true");
                 localStorage.setItem(
                   "flashMessage",
-                  "Task updated successfully!"
+                  "New Commit, Task and Ranking Updated! 🏆"
                 );
                 localStorage.setItem("flashType", "success");
                 window.location.reload();

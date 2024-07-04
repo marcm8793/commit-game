@@ -1,38 +1,36 @@
 <div class="row mb-4">
   <% @arenas.each_with_index do |arena, index| %>
-    <% unless arena.start_date <= Date.new(2024, 10, 4) %>
-      <div class="col-md-4 mt-4">
-        <div class="card">
-          <div>
-            <% if arena.image_url.present? %>
-              <img src="<%= arena.image_url %>" class="card-img-top pic" alt="<%= arena.name %>">
-            <% end %>
+    <div class="col-md-4 mt-4">
+      <div class="card">
+        <div>
+          <% if arena.image_url.present? %>
+            <img src="<%= arena.image_url %>" class="card-img-top pic" alt="<%= arena.name %>">
+          <% end %>
+        </div>
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-center w-100">
+            <h5 class="card-title text-primary"><%= arena.name %></h5>
+            <a href="<%= arena_path(arena) %>" class="btn btn-primary button_radius">Join</a>
           </div>
-          <div class="card-body">
-            <div class="d-flex justify-content-between align-items-center w-100">
-              <h5 class="card-title text-primary"><%= arena.name %></h5>
-              <a href="<%= arena_path(arena) %>" class="btn btn-primary button_radius">Join</a>
-            </div>
-            <div class="mt-2 d-flex flex-wrap justify-content-between align-items-center w-100">
-              <span style="height: 20px; line-height: 20px;">
-                <i class="fa-solid fa-calendar" style="color: #ffffff;"></i>
-                <%= arena.start_date %>
-              </span>
-              <span style="height: 20px; line-height: 20px;">
-                <i class="fa-solid fa-euro-sign" style="color: #ffffff;"></i>
-                <%= arena.prize %>
-              </span>
-              <span style="height: 20px; line-height: 20px;">
-                <i class="fa-solid fa-person" style="color: #ffffff;"></i>
-                <%= arena.slots %>
-              </span>
-              <span style="height: 20px; line-height: 20px;">
-                <%= arena.category.name %>
-              </span>
-            </div>
+          <div class="mt-2 d-flex flex-wrap justify-content-between align-items-center w-100">
+            <span style="height: 20px; line-height: 20px;">
+              <i class="fa-solid fa-calendar" style="color: #ffffff;"></i>
+              <%= arena.start_date %>
+            </span>
+            <span style="height: 20px; line-height: 20px;">
+              <i class="fa-solid fa-euro-sign" style="color: #ffffff;"></i>
+              <%= arena.prize %>
+            </span>
+            <span style="height: 20px; line-height: 20px;">
+              <i class="fa-solid fa-person" style="color: #ffffff;"></i>
+              <%= arena.slots %>
+            </span>
+            <span style="height: 20px; line-height: 20px;">
+              <%= arena.category.name %>
+            </span>
           </div>
         </div>
       </div>
-    <% end %>
+    </div>
   <% end %>
 </div>
